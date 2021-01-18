@@ -12,27 +12,27 @@
 
 ActiveRecord::Schema.define(version: 2021_01_18_033258) do
 
-  create_table "cafes", force: :cascade do |t|
-    t.string "name"
-    t.integer "rating"
-    t.text "address"
-    t.integer "state_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["state_id"], name: "index_cafes_on_state_id"
-    t.index ["user_id"], name: "index_cafes_on_user_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.text "content"
-    t.integer "user_id", null: false
-    t.integer "cafe_id", null: false
+    t.integer "user_id"
+    t.integer "shop_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cafe_id"], name: "index_reviews_on_cafe_id"
+    t.index ["shop_id"], name: "index_reviews_on_shop_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "name"
+    t.integer "rating"
+    t.text "address"
+    t.integer "state_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_id"], name: "index_shops_on_state_id"
+    t.index ["user_id"], name: "index_shops_on_user_id"
   end
 
   create_table "states", force: :cascade do |t|
@@ -49,8 +49,4 @@ ActiveRecord::Schema.define(version: 2021_01_18_033258) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "cafes", "states"
-  add_foreign_key "cafes", "users"
-  add_foreign_key "reviews", "caves"
-  add_foreign_key "reviews", "users"
 end

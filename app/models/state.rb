@@ -1,3 +1,3 @@
 class State < ApplicationRecord
-    has_many :cafes
+    has_many :shops
 end

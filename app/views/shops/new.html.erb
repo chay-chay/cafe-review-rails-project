@@ -1,0 +1,19 @@
+ 
+ 
+ 
+ <h1> New Cafe </h1>
+ 
+ <%= form_for(@shop) do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name, placeholder: 'Please fill in a new cafe' %>
+
+<%= f.label :address %>
+<%= f.text_field :address %>
+
+<p> Select a state that already exist </p>
+<%= f.collection_select(:state_id, State.all, :id, :name) %>
+
+<p> Or create a new state for the cafe </p>
+
+<%= f.submit "Signup!" %>
+<% end %>  
