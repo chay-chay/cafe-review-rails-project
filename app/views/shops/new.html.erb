@@ -2,7 +2,11 @@
  
  
  <h1> New Cafe </h1>
- 
+ <% if @shop.errors.any? %>
+  <div class="alert alert-warning">
+    <strong> <%= @shop.errors.full_messages %></strong>
+  </div>
+<% end %>
  <%= form_for(@shop) do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name, placeholder: 'Please fill in a new cafe' %>
@@ -11,9 +15,14 @@
 <%= f.text_field :address %>
 
 <p> Select a state that already exist </p>
-<%= f.collection_select(:state_id, State.all, :id, :name) %>
+<%= f.collection_select(:state_id, State.all, :id, :name, include_blank: 'Select One') %>
 
 <p> Or create a new state for the cafe </p>
+<!-- can write like this f.fields_for @shop.build_state%> -->
+<%= f.fields_for :state do |s| %>
+<%= s.label :name %>
+<%= s.text_field :name %>
+<% end %>
 
-<%= f.submit "Signup!" %>
+<%= f.submit "Create Cafe!" %>
 <% end %>  

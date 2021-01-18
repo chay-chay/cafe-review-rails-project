@@ -1,0 +1,8 @@
+<h1> All Cafe </h1>
+<ol>
+<% @shops.each do |s| %>
+<li><%= s.name %>
+<%= s.address %>
+<%= s.rating %></li>
+<% end %>
+</ol>
