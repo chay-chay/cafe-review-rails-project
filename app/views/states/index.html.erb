@@ -3,6 +3,6 @@
 
 <% @states.each do |s| %>
 <li><%= s.name %></li>
-<%= link_to "State", state_path %>
+<%= link_to "State", state_path(s.id) %>
 <% end %>
 </ul>

@@ -1,13 +1,14 @@
 <h1> All reviews </h1>
 
 <ol>
-<% @reviews.each do |r| %>
-<li>Cafe Name: <%= r.shop.name %>
-<br>
-Review: <%= r.content %>
-<br>
-Rating: <%= r.rating %></li>
-Username: <%= r.user.username %>
-
-<% end %>
+    <% @reviews.each do |r| %>
+        <li>
+            Cafe Name: <%= r.shop.name %>
+            <br>
+            Review: <%= r.content %>
+            <br>
+            Rating: <%= r.rating %>
+            Username: <%= r.user.username %>
+             </li>
+    <% end %>
 <ol>

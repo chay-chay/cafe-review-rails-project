@@ -4,7 +4,7 @@ class StatesController < ApplicationController
     end
 
     def show
-        @state = State.find(params[:id])
+        @state = State.find_by_id(params[:id])
     end
 
 end

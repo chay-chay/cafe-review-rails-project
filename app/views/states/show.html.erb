@@ -1,1 +1,12 @@
-<%= %>
+<h1> State: <%= @state.name %> </h1>
+<% @state.shops.each do |s| %>
+<ol>
+    <li> 
+        Name :<%= s.name %> 
+        <br>
+        Address: <%= s.address %> 
+        <br>
+        Rating: <%= s.rating %>   <!-- Need to add average rating from all rating -->
+    </li>
+</ol>
+<% end %>
