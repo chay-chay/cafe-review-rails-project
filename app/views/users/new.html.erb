@@ -1,10 +1,13 @@
 <h1> Signup </h1>
 
+<%= render partial: 'layouts/errors', locals: {object: @user} %>
+
+<!--
 <% if @user.errors.any? %>
   <div class="alert alert-warning">
     <strong> <%= @user.errors.full_messages %></strong>
   </div>
-<% end %>
+<% end %>  -->
 
 
 <%= form_for(@user) do |f| %>

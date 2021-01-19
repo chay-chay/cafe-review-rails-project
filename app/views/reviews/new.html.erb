@@ -1,28 +1,28 @@
 <h1> Cafe Review </h1>
 
-<% if params[:shop_id] %>
-Add review for <%= @review.shop.name %> - <%= @review.shop.state.name %>
-<% else %>
-<h2> Create a review </h2>
+<%= render partial: 'layouts/errors', locals: {object: @review} %>
+
+  <% if params[:shop_id] %>
+    Add review for <%= @review.shop.name %> - <%= @review.shop.state.name %>
+
+  <% else %>
+    <h2> Create a review </h2>
 <% end %>
 
- <% if @review.errors.any? %>
-  <div class="alert alert-warning">
-    <strong> <%= @shop.errors.full_messages %></strong>
-  </div>
-<% end %> 
- <%= form_for(@review) do |f| %>
-
-<%= f.label :rating %>
-<%= f.number_field :rating, min:0, max:5 %>
 
 
-<%= f.label :content %>
-<%= f.text_area :content, size: "25x10" %>
+  <%= form_for(@review) do |f| %>
+
+  <%= f.label :rating %>
+  <%= f.number_field :rating, min:0, max:5 %>
+
+
+  <%= f.label :content %>
+  <%= f.text_area :content, size: "25x10" %>
 
 
   <%= f.hidden_field :shop_id %>
 
-<%= f.submit "Write a review!" %>
+  <%= f.submit "Write a review!" %>
 <% end %>
 
