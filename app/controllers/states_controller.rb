@@ -1,6 +1,10 @@
 class StatesController < ApplicationController
     def index
-        @states = State.alpha
+        if params[:name]
+            @states = State.search_by_name(params[:name])
+        else
+            @states = State.alpha
+        end
     end
 
     def show

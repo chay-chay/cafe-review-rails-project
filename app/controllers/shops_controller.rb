@@ -1,7 +1,12 @@
 class ShopsController < ApplicationController
+
     
     def index
-        @shops = Shop.all
+        if params[:name]
+            @shops = Shop.search_by_name(params[:name])
+        else
+            @shops = Shop.all
+        end
     end
     
     def new
@@ -12,7 +17,7 @@ class ShopsController < ApplicationController
     def create
         @shop = Shop.new(shop_params)
         @shop.user_id = session[:user_id]
-        if @shop.save
+        if @shop.save!
             redirect_to shop_path(@shop)
         else
             @shop.build_state

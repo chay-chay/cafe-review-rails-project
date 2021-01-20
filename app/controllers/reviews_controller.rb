@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
         @review = current_user.reviews.build(review_params)
         #@review.user_id = session[:user_id]
         if @review.save  
-            redirect_to review_path(@review)
+          redirect_to review_path(@review)
         else
             render :new
         end
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
 
     def index
         if @shop = Shop.find_by_id(params[:shop_id])
-            #Check for nested like shop/1/reviews ans valid id
+            #Check for nested like shop/1/reviews and valid id
             @reviews = @shop.reviews
           else
             #it's not nested routes

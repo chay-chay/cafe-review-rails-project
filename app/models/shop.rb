@@ -3,7 +3,8 @@ class Shop < ApplicationRecord
   has_many :users, through: :reviews
   belongs_to :state
   belongs_to :user #optional creator of it (shop added by user)
-  
+
+  scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")}
   #validation
   validates :name, presence: true
   validate :shop_unique

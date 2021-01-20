@@ -1,4 +1,10 @@
 <h1> All Cafe </h1>
+<%= form_tag("/shops", method: "get") do %>
+    <%= label_tag(:name, "Search by name:") %>
+    <%= text_field_tag(:name) %>
+    <%= submit_tag("Search") %>
+<% end %>
+
     <ol>
         <% @shops.each do |s| %>
         <li>
