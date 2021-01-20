@@ -57,23 +57,26 @@
           <%= link_to "Add a New Cafe", new_shop_path, class: 'nav-link' %>
         </li>
 
-         <li class="nav-item">
+        <li class="nav-item">
+          <%= link_to "Write a review", new_review_path, class: 'nav-link' %>
+        </li>
+
+       <li class="nav-item">
           <%= link_to "Signup", signup_path, class: 'nav-link' %>
         </li>
 
         <li class="nav-item">
            <%= link_to "Login", login_path, class: 'nav-link' %>
         </li>
-
-        <li class="nav-item">
-          <%= link_to "logout", logout_path, method: :delete, class: 'nav-link' %>
-        </li>
-        
        
       </ul> 
 
        <span class="navbar-text"> 
-     <%= link_to "user", root_path, class: 'nav-link' %>
+     
+    
+          <%= link_to "logout", logout_path, method: :delete, class: 'nav-link' %>
+       
+
       </span>
      
     </div>

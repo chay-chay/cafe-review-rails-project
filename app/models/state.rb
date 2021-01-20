@@ -1,6 +1,10 @@
 class State < ApplicationRecord
     has_many :shops
 
-    validates :name, presence: true
+   validates :name, uniqueness: true 
+   
+   def self.alphabet
+    order(:name)
+   end
 
 end

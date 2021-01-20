@@ -1,10 +1,12 @@
 <h1> All Cafe </h1>
-<ol>
-<% @shops.each do |s| %>
-<li><%= s.name %> -
-<%= s.address %> -
-<%= s.state.name %>
-<%= s.rating %></li>
-<%= link_to "Write a review", new_shop_review_path(s.id)%>
-<% end %>
-</ol>
+    <ol>
+        <% @shops.each do |s| %>
+        <li>
+            Cafe name: <%= s.name %> -
+            <br>
+            State: <%= s.state.try(:name) %>
+            <br>
+            Rating: <%= s.rating %></li>    <!-- Average from all rating -->
+            <%= link_to "Write a review", new_shop_review_path(s.id)%>
+        <% end %>
+    </ol>
