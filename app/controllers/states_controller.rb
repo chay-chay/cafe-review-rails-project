@@ -1,6 +1,6 @@
 class StatesController < ApplicationController
     def index
-        @states = State.all
+        @states = State.alpha
     end
 
     def show

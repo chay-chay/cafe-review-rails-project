@@ -7,6 +7,7 @@ class Shop < ApplicationRecord
   #validation
   validates :name, presence: true
   validate :shop_unique
+ 
   
   # accepts_nested_attributes_for :state 
   def state_attributes=(attributes) #add state in the cafe
@@ -25,13 +26,15 @@ class Shop < ApplicationRecord
   end
   
 
-  def self.alphabet
+  def self.alpha
     order(:name)
   end
 
   def name_state
     "#{name} - #{state.try(:name)}"
   end
+
+
 
   
 end

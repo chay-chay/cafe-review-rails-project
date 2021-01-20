@@ -7,7 +7,7 @@
 <%= f.text_field :name, placeholder: 'Please fill in a new cafe' %>
 
 <p> Select a state that already exist </p>
-<%= f.collection_select(:state_id, State.alphabet, :id, :name, include_blank: 'Select One') %>
+<%= f.collection_select(:state_id, State.alpha, :id, :name, include_blank: 'Select One') %>
 
 <p> Or create a new state for the cafe </p>
 <!-- can write like this f.fields_for @shop.build_state%> -->
