@@ -1,0 +1,20 @@
+<h1> New Cafe </h1>
+
+<%= render partial: 'layouts/errors', locals: {object: @shop} %>
+
+ <%= form_for(@shop) do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name, placeholder: 'update cafe name' %>
+
+<p> Select a state that already exist </p>
+<%= f.collection_select(:state_id, State.alpha, :id, :name, include_blank: 'Select One') %>
+
+<p> Or create a new state for the cafe </p>
+<!-- can write like this f.fields_for @shop.build_state%> -->
+<%= f.fields_for :state do |s| %>
+<%= s.label 'State name' %>
+<%= s.text_field :name %>
+<% end %>
+
+<%= f.submit "Update Cafe!" %>
+<% end %>  

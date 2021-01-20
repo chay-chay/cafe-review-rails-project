@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2021_01_18_033258) do
 
   create_table "shops", force: :cascade do |t|
     t.string "name"
-    t.integer "rating"
     t.integer "state_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -44,6 +43,8 @@ ActiveRecord::Schema.define(version: 2021_01_18_033258) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "uid"
+    t.string "provider"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

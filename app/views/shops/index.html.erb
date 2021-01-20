@@ -12,7 +12,11 @@
             <br>
             State: <%= s.state.try(:name) %>
             <br>
-            Rating: <%= s.rating %></li>    <!-- Average from all rating -->
+           
             <%= link_to "Write a review", new_shop_review_path(s.id)%>
+          
         <% end %>
+
+     
+
     </ol>

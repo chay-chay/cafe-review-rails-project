@@ -9,11 +9,16 @@ class Shop < ApplicationRecord
   validates :name, presence: true
   validate :shop_unique
  
+
+  #where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
   
   # accepts_nested_attributes_for :state 
   def state_attributes=(attributes) #add state in the cafe
     if !attributes[:name].blank? 
-        self.name = State.find_or_create_by(attributes)
+      #   attributes[:name] = attributes[:name].upcase
+      # byebug
+        self.state = State.find_or_create_by(attributes)
+        
     end
   end
 

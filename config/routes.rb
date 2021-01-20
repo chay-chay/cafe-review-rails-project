@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'sessions#home'
+  get '/auth/:provider/callback', to: 'sessions#omniauth'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/signup' => 'users#new'
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :shops do
-    resources :reviews, only: [:new, :index]
+    resources :reviews, only: [:new, :index, :edit]
   end
   resources :states
   resources :users

@@ -17,7 +17,8 @@ class ShopsController < ApplicationController
     def create
         @shop = Shop.new(shop_params)
         @shop.user_id = session[:user_id]
-        if @shop.save!
+        
+        if @shop.save
             redirect_to shop_path(@shop)
         else
             @shop.build_state
@@ -29,10 +30,24 @@ class ShopsController < ApplicationController
         @shop = Shop.find_by_id(params[:id])
     end
 
+    def edit 
+        @shop = Shop.find(params[:id])
+    end
+
+    def update
+        @shop = Shop.find(params[:id])
+        @shop.update(shop_params)
+        if @shop.valid?
+            redirect_to shops_path 
+        else
+            render :edit 
+        end
+    end
+
 
     private
 
     def shop_params
-        params.require(:shop).permit(:name, :rating, :state_id, :user_id, state_attributes:[:name])
+        params.require(:shop).permit(:name, :rating, :state_id, state_attributes:[:name])
     end
 end
