@@ -1,7 +1,7 @@
 <h1> All States </h1>
 
 <%= form_tag("/states", method: "get") do %>
-    <%= label_tag(:name, "Search by name:") %>
+    <%= label_tag(:name, "Search by state name:") %>
     <%= text_field_tag(:name) %>
     <%= submit_tag("Search") %>
 <% end %>

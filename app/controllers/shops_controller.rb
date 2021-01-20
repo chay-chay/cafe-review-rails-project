@@ -2,6 +2,8 @@ class ShopsController < ApplicationController
 
     
     def index
+        @shop =  Shop.find_by_id(params[:id])
+
         if params[:name]
             @shops = Shop.search_by_name(params[:name])
         else
@@ -19,6 +21,9 @@ class ShopsController < ApplicationController
         @shop.user_id = session[:user_id]
         
         if @shop.save
+            @shop.image.purge
+            @shop.image.attach(params[:shop][:image])
+
             redirect_to shop_path(@shop)
         else
             @shop.build_state
@@ -31,7 +36,7 @@ class ShopsController < ApplicationController
     end
 
     def edit 
-        @shop = Shop.find(params[:id])
+        @shop = Shop.find_by_id(params[:id])
     end
 
     def update
@@ -43,6 +48,13 @@ class ShopsController < ApplicationController
             render :edit 
         end
     end
+
+    def destroy
+        @shop = Shop.find(params[:id])
+        @shop.destroy
+        redirect_to shops_path 
+    end
+
 
 
     private

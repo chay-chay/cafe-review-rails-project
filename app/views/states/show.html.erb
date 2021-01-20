@@ -5,7 +5,7 @@
         Name :<%= s.name %> 
         <br>
         <br>
-        Rating: <%= s.rating %>   <!-- Need to add average rating from all rating -->
+        <%= link_to "Edit a shop", edit_shop_path(s.id) %>
     </li>
 </ol>
 <% end %>

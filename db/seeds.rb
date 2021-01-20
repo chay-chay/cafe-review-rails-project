@@ -2,6 +2,9 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 # # Examples:
+
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
 # #
 # State = State.create([{ name: 'PA' }, { user_id: '1'}])
 # State = State.create([{ name: 'VA' }, { user_id: '1'}])
@@ -13,3 +16,13 @@
 # Shop = Shop.create([{ name: 'Terra Cafe' }])
 # Shop = Shop.create([{ name: 'Simon's Cafe' }])
 # #   Character.create(name: 'Luke', movie: movies.first)
+
+a = State.create(name: 'AL')
+b = State.create(name: 'AK')
+c = State.create(name: 'AZ')
+d = State.create(name: 'AR')
+d = State.create(name: 'CA')
+
+Shop.create([{name: 'STARBUCKS', state: a,  user_id: 1},
+{name: "DUNKIN'", state: b},
+{name: "SIMON", state: c}] )

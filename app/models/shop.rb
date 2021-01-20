@@ -3,12 +3,15 @@ class Shop < ApplicationRecord
   has_many :users, through: :reviews
   belongs_to :state
   belongs_to :user #optional creator of it (shop added by user)
+  has_one_attached :image
 
+  
   scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")}
+  # scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
   #validation
   validates :name, presence: true
   validate :shop_unique
- 
+  before_save :upcase_fields
 
   #where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
   
@@ -40,7 +43,11 @@ class Shop < ApplicationRecord
     "#{name} - #{state.try(:name)}"
   end
 
+  def upcase_fields
+    self.name.upcase!
+ end
 
+ 
 
   
 end

@@ -1,7 +1,11 @@
 <h1> cafe </h1>
 
+<% if @shop.image.attached?%>
+Image: <%= image_tag url_for(@shop.image) %>
+<% end %>
+
 Name: <%= @shop.name %><br>
 State: <%= @shop.state.name %>
-<%= link_to "Edit a shop", edit_shop_path %>
+<%= link_to "Edit a shop", edit_shop_path(@shop) %>
 <%= link_to "delete", shop_path(@shop), method: 'delete' %>
 

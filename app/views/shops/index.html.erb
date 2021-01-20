@@ -1,6 +1,6 @@
 <h1> All Cafe </h1>
 <%= form_tag("/shops", method: "get") do %>
-    <%= label_tag(:name, "Search by name:") %>
+    <%= label_tag(:name, "Search by cafe name:") %>
     <%= text_field_tag(:name) %>
     <%= submit_tag("Search") %>
 <% end %>
@@ -11,12 +11,17 @@
             Cafe name: <%= s.name %> -
             <br>
             State: <%= s.state.try(:name) %>
+            
             <br>
            
             <%= link_to "Write a review", new_shop_review_path(s.id)%>
-          
-        <% end %>
+            <br>
+            <%= link_to "Edit a shop", edit_shop_path(s.id) %>
+            <br>
+            <%= link_to "Delete", shop_path(s.id), method: 'delete' %>
 
+        <% end %>
+   
      
 
     </ol>
