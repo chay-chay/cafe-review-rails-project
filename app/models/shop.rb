@@ -5,7 +5,7 @@ class Shop < ApplicationRecord
   belongs_to :user #optional creator of it (shop added by user)
   has_one_attached :image
 
-  
+
   scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")}
   # scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
   #validation
@@ -47,6 +47,7 @@ class Shop < ApplicationRecord
     self.name.upcase!
  end
 
+  
  
 
   

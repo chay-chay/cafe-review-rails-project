@@ -4,6 +4,14 @@ Cafe Name: <%= @review.shop.name %>
 <br>
 Review: <%= @review.content %>
 <br>
+<% @review.blank_stars.times do %>
+ <span class="glyphicon glyphicon-star-empty"></span>
+<% end %>
+
 Rating: <%= @review.rating %>
 <br>
 Username: <%= @review.user.username %>
+ <br>
+ 
+  <%= f.submit "Write a review!" %>
+<% end %>

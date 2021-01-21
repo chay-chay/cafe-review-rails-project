@@ -3,15 +3,8 @@ class SessionsController < ApplicationController
   end
 
   def new
+    
   end
-
-  # def omniauth #if they are logging in with oauth
-  #   if that user has already logged in this way
-  #   user = User.find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |u|
-  #       u.email = auth["info"]["email"]
-  #       u.password = SecureRandom.hex(15)
-  #       u.username = auth["info"]["email"]
-  #   end
 
 
   def omniauth

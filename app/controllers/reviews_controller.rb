@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :redirect_if_not_logged_in
     def new
         if @shop = Shop.find_by_id(params[:shop_id]) #nested
             @review = @shop.reviews.build

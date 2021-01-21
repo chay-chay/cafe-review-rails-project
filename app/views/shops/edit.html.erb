@@ -2,9 +2,12 @@
 
 <%= render partial: 'layouts/errors', locals: {object: @shop} %>
 
- <%= form_for(@shop) do |f| %>
+<%= form_for(@shop) do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name, placeholder: 'update cafe name' %>
+
+<%= f.label :image %>  <!-- associated with has_one_attaced and no need to add to schema -->
+<%= f.file_field :image %>
 
 <p> Select a state that already exist </p>
 <%= f.collection_select(:state_id, State.alpha, :id, :name, include_blank: 'Select One') %>

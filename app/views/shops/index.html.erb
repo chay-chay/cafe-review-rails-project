@@ -8,13 +8,16 @@
     <ol>
         <% @shops.each do |s| %>
         <li>
-            Cafe name: <%= s.name %> -
+        <% if s.image.attached? %>
+        <%= image_tag url_for(s.image) %>
+        <% end %>
+            Cafe name: <%= s.name %> 
             <br>
             State: <%= s.state.try(:name) %>
             
             <br>
-           
-            <%= link_to "Write a review", new_shop_review_path(s.id)%>
+            <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
+            <%= link_to "Write a review", new_shop_review_path(s.id), :class => "btn"%>
             <br>
             <%= link_to "Edit a shop", edit_shop_path(s.id) %>
             <br>

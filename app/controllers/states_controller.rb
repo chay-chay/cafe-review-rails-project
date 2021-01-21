@@ -1,4 +1,6 @@
 class StatesController < ApplicationController
+    before_action :redirect_if_not_logged_in
+    
     def index
         if params[:name]
             @states = State.search_by_name(params[:name])
