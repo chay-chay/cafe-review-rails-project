@@ -14,6 +14,7 @@
             Cafe name: <%= s.name %> 
             <br>
             State: <%= s.state.try(:name) %>
+        
             
             <br>
             <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>

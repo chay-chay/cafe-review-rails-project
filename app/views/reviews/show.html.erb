@@ -1,7 +1,10 @@
 <h1>Review </h1>
 
-Cafe Name: <%= @review.shop.name %>
+Cafe Name: <%= @review.shop.name%>
 <br>
+State: <%= @review.name_state %>
+<br>
+
 Review: <%= @review.content %>
 <br>
 <% @review.blank_stars.times do %>
@@ -12,6 +15,7 @@ Rating: <%= @review.rating %>
 <br>
 Username: <%= @review.user.username %>
  <br>
- 
-  <%= f.submit "Write a review!" %>
+
+  <% if logged_in? %>
+           <%= link_to "Edit your review", edit_review_path %>
 <% end %>

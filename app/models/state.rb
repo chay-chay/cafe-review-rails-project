@@ -5,11 +5,11 @@ class State < ApplicationRecord
     before_save :upcase_fields
 
    def upcase_fields
-      self.name.upcase!
+      self.name.upcase
    end
 
    def self.alpha
-    order(:name)
+   order(:name)
    end
 
 

@@ -44,6 +44,9 @@ class ShopsController < ApplicationController
         @shop = Shop.find(params[:id])
         @shop.update(shop_params)
         if @shop.valid?
+            @shop.image.purge
+            @shop.image.attach(params[:shop][:image])
+
             redirect_to shops_path 
         else
             render :edit 
@@ -63,4 +66,9 @@ class ShopsController < ApplicationController
     def shop_params
         params.require(:shop).permit(:name, :rating, :state_id, state_attributes:[:name])
     end
+
+    def set_shop
+        @shop = Shop.find_by_id(params[:id])
+        redirect_to shops_path if !@shop
+     end
 end

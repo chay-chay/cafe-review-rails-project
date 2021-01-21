@@ -3,15 +3,17 @@
 <ol>
     <% @reviews.each do |r| %>
         <li>
-       
             Cafe Name: <%= r.shop.name %>
             Review: <%= r.content %>
             <br>
             Rating: <%= r.rating %>
             <br>
             Username: <%= r.user.username %>
-           
              </li>
              <br>
+
+             
     <% end %>
+
+  
 <ol>

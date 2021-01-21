@@ -22,7 +22,7 @@ b = State.create(name: 'AK')
 c = State.create(name: 'AZ')
 d = State.create(name: 'AR')
 d = State.create(name: 'CA')
-
-Shop.create([{name: 'STARBUCKS', state: a,  user_id: 1},
-{name: "DUNKIN'", state: b},
-{name: "SIMON", state: c}] )
+e = State.create(name: 'CO')
+f = State.create(name: 'CT')
+g = State.create(name: 'DE')    
+h = State.create(name: 'FL') 

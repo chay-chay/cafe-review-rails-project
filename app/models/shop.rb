@@ -7,6 +7,7 @@ class Shop < ApplicationRecord
 
 
   scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")}
+  
   # scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
   #validation
   validates :name, presence: true
@@ -42,6 +43,7 @@ class Shop < ApplicationRecord
   def name_state
     "#{name} - #{state.try(:name)}"
   end
+
 
   def upcase_fields
     self.name.upcase!

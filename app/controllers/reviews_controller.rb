@@ -26,6 +26,21 @@ class ReviewsController < ApplicationController
         @review.shop
       end
 
+      def edit 
+        @review = Review.find_by_id(params[:id])
+       
+    end
+
+    def update
+        @review = Review.find(params[:id])
+        @review.update(review_params)
+        if @review.valid?
+            redirect_to review_path 
+        else
+            render :edit 
+        end
+    end
+
     def index
         if @shop = Shop.find_by_id(params[:shop_id])
             #Check for nested like shop/1/reviews and valid id
@@ -34,7 +49,7 @@ class ReviewsController < ApplicationController
             #it's not nested routes
             @reviews = Review.all
           end
-        
+         
     end
 
     private

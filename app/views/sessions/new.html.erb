@@ -5,12 +5,13 @@
 
     <%= form_for(:user) do |f| %>
         <div class="user-box">
-        <%= f.label :username %>
         <%= f.text_field :username %>
+        <%= f.label :username %>
+        
         </div>
         <div class="user-box">
-        <%= f.label :password %>
         <%= f.password_field :password %>
+        <%= f.label :password %>
         </div>
         
         <span> <%= f.submit "Login!" %> </span>
