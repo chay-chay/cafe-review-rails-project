@@ -4,6 +4,7 @@
 Image: <%= image_tag url_for(@shop.image) %>
 <% end %>
 
+<%= link_to "Check out the review", shop_reviews_path(@shop), :class => "btn"%>
 <%= link_to "Write a review", new_shop_review_path(@shop), class: "btn"  %>
 
 

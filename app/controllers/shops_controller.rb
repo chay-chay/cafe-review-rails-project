@@ -4,7 +4,6 @@ class ShopsController < ApplicationController
     before_action :redirect_if_not_authorized, only: [:edit, :update, :destroy]
 
     def index
-        
         @shop =  Shop.find_by_id(params[:id])
         if params[:name]
             @shops = Shop.search_by_name(params[:name])

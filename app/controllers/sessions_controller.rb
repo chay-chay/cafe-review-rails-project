@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   add_flash_types :success, :info, :warning, :danger
+  layout "welcome"
 
   def home
     

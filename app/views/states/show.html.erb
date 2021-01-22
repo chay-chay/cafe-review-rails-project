@@ -2,10 +2,17 @@
 <% @state.shops.each do |s| %>
 <ol>
     <li> 
+    <% if s.image.attached? %>
+            <%= image_tag url_for(s.image) %>
+        <% end %>
+        <br>
         Name :<%= s.name %> 
         <br>
         <br>
-       
+        <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
+        <%= link_to "Write a review", new_shop_review_path(@shop), class: "btn" %>
     </li>
 </ol>
 <% end %>
+
+    

@@ -24,7 +24,6 @@ class Shop < ApplicationRecord
     end
   end
 
-
   def shop_unique
     # if there is already a shop with same state, throw an error
     shop_exits = Shop.find_by(name: name, state_id: state_id)
@@ -32,7 +31,6 @@ class Shop < ApplicationRecord
       errors.add(:name, 'has already been added for the state')
     end
   end
-  
 
   def self.alpha
     order(:name, :state)
@@ -41,7 +39,6 @@ class Shop < ApplicationRecord
   def name_state
     "#{name} - #{state.try(:name)}"
   end
-
 
   def upcase_fields
     self.name.upcase!

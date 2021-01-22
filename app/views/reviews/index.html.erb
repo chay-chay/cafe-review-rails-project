@@ -1,4 +1,4 @@
-<h1> All reviews </h1> 
+<h1> All reviews  </h1> 
 
     <ol>
         <% @reviews.each do |r| %>
@@ -12,6 +12,8 @@
                 Rating: <%= r.rating %>
                 <br>
                 Username: <%= r.user.username %>
+                <br>
+                Date: <%= r.created_at.strftime("%b %d, %Y - %I:%M%p")%>
             </li>
                 <br>      
         <% end %>  
@@ -21,3 +23,5 @@
         <%= "No reviews just yet, would you like to add the first?" %>
         <%= link_to "Write a review", new_shop_review_path, class: "btn" %>
     <% end %>
+
+<%= link_to "Back to the all cafe", shops_path(@reviews), class: "btn" %>

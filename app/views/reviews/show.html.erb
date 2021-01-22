@@ -21,13 +21,17 @@
     <% @review.blank_stars.times do %>
     <span class="glyphicon glyphicon-star-empty"></span>
     <% end %>
+<link rel="stylesheet" href="jquery.raty.css">
+<script src="jquery.raty.js"></script>
 
+<div></div>
     Rating: <%= @review.rating %>
     <br>
     Username: <%= @review.user.username %>
     <br>
     <br>
 
+    <%= link_to "Back to the #{@review.shop.name} - #{@review.name_state} ", shop_path, class: "btn" %>
     <%= link_to "Edit your review", edit_review_path, class: "btn" %>
     <%= link_to "Delete your review", review_path, method: 'delete', class: "btn" %>
    
