@@ -10,7 +10,8 @@
 
 <% @states.each do |s| %>
     <li>
-        <%= s.name %> <%= link_to "Check it out!", state_path(s.id) %> 
+        <%= s.name %> <%= link_to "Check it out!", state_path(s.id), class: "btn" %> 
+       
     </li>
 
 <% end %>

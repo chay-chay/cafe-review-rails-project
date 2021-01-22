@@ -1,10 +1,12 @@
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
+  add_flash_types :success, :info, :warning, :danger
     def new
         if @shop = Shop.find_by_id(params[:shop_id]) #nested
             @review = @shop.reviews.build
           else
             @review = Review.new #not nested
+
           end
         #@review.build_shop
         #review belongs to shop
@@ -15,7 +17,7 @@ class ReviewsController < ApplicationController
         @review = current_user.reviews.build(review_params)
         #@review.user_id = session[:user_id]
         if @review.save  
-          redirect_to review_path(@review)
+          redirect_to review_path(@review), success: "Thank you for your review submission."
         else
             render :new
         end
@@ -35,7 +37,7 @@ class ReviewsController < ApplicationController
         @review = Review.find(params[:id])
         @review.update(review_params)
         if @review.valid?
-            redirect_to review_path 
+            redirect_to review_path, success: "Update successful!"
         else
             render :edit 
         end
@@ -57,8 +59,6 @@ class ReviewsController < ApplicationController
     def review_params
         params.require(:review).permit(:shop_id, :rating, :content )
     end
-
-
     
 
 end

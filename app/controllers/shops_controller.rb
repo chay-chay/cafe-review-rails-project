@@ -1,14 +1,12 @@
 class ShopsController < ApplicationController
     before_action :redirect_if_not_logged_in
-
     
     def index
         @shop =  Shop.find_by_id(params[:id])
-
         if params[:name]
             @shops = Shop.search_by_name(params[:name])
         else
-            @shops = Shop.all
+            @shops = Shop.alpha
         end
     end
     
@@ -20,12 +18,12 @@ class ShopsController < ApplicationController
     def create
         @shop = Shop.new(shop_params)
         @shop.user_id = session[:user_id]
-        
+       
         if @shop.save
             @shop.image.purge
             @shop.image.attach(params[:shop][:image])
 
-            redirect_to shop_path(@shop)
+            redirect_to shop_path(@shop), success: "Thank you for adding a cafe."
         else
             @shop.build_state
             render :new
@@ -47,7 +45,7 @@ class ShopsController < ApplicationController
             @shop.image.purge
             @shop.image.attach(params[:shop][:image])
 
-            redirect_to shops_path 
+            redirect_to shops_path, success: "Update successful!"
         else
             render :edit 
         end

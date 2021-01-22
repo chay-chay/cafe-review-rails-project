@@ -1,3 +1,4 @@
+ 
 <h1> All Cafe </h1>
 <%= form_tag("/shops", method: "get") do %>
     <%= label_tag(:name, "Search by cafe name:") %>
@@ -5,27 +6,22 @@
     <%= submit_tag("Search") %>
 <% end %>
 
-    <ol>
+  
         <% @shops.each do |s| %>
         <li>
-        <% if s.image.attached? %>
-        <%= image_tag url_for(s.image) %>
-        <% end %>
-            Cafe name: <%= s.name %> 
-            <br>
+            <% if s.image.attached? %>
+                <%= image_tag url_for(s.image) %>
+            <% end %>
+            Cafe name: <%= s.name  %> 
             State: <%= s.state.try(:name) %>
-        
-            
             <br>
-            <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
-            <%= link_to "Write a review", new_shop_review_path(s.id), :class => "btn"%>
-            <br>
-            <%= link_to "Edit a shop", edit_shop_path(s.id) %>
-            <br>
-            <%= link_to "Delete", shop_path(s.id), method: 'delete' %>
-
-        <% end %>
+            <% if logged_in? %>
+                <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
+                <%= link_to "Write a review", new_shop_review_path(s.id), :class => "btn"%>
+                <%= link_to "Edit a shop", edit_shop_path(s.id), class: "btn"%>
+                <%= link_to "Delete", shop_path(s.id), method: 'delete', :class => "btn" %> 
+                <br>
+            <% end %>
+            <% end %>
+                <br>
    
-     
-
-    </ol>

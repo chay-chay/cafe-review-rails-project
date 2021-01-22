@@ -4,25 +4,23 @@ class Shop < ApplicationRecord
   belongs_to :state
   belongs_to :user #optional creator of it (shop added by user)
   has_one_attached :image
+  validates :name, :uniqueness => {scope: :state_id, :case_sensitive => false}
 
-
-  scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")}
+  # Ex:- scope :active, -> {where(:active => true)}}
+  scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")} #search cafe name
   
   # scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
   #validation
   validates :name, presence: true
-  validate :shop_unique
+  # validate :shop_unique
   before_save :upcase_fields
 
   #where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
   
   # accepts_nested_attributes_for :state 
-  def state_attributes=(attributes) #add state in the cafe
+  def state_attributes=(attributes) #add state in the cafe 
     if !attributes[:name].blank? 
-      #   attributes[:name] = attributes[:name].upcase
-      # byebug
-        self.state = State.find_or_create_by(attributes)
-        
+        self.state = State.find_or_create_by(name: attributes[:name].upcase)#attributes is a hash of key value pairs
     end
   end
 
@@ -37,7 +35,7 @@ class Shop < ApplicationRecord
   
 
   def self.alpha
-    order(:name)
+    order(:name, :state)
   end
 
   def name_state
@@ -49,8 +47,12 @@ class Shop < ApplicationRecord
     self.name.upcase!
  end
 
-  
+  def self.sum_rating
+    Review.average(:rating)
+  end
  
+  
+
 
   
 end

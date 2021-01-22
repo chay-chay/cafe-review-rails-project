@@ -4,15 +4,25 @@ class Review < ApplicationRecord
 
   validates :rating, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 6}
   validates :content, presence: true, length: { maximum: 500 }
+  validates :user, :uniqueness => {scope: :shop}
+  # Ex:- scope :active, -> {where(:active => true)}
+  
+  scope :avg_rating, -> {self.average(:rating)}
 
-  scope :avg_shop, -> {self.average(:rating)}
-
-  def blank_stars
+  def blank_stars #check how to show starts
     5 - rating.to_i
    end
 
    def name_state
    self.shop.state.name
+  end
+
+  def avg_rating
+    Review.average(:rating)
+  end
+
+  def count_reviews
+    Review.count(:rating)
   end
 
 end
