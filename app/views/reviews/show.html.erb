@@ -26,7 +26,8 @@
     <br>
     Username: <%= @review.user.username %>
     <br>
+    <br>
 
-    <% if logged_in? %>
-            <%= link_to "Edit your review", edit_review_path %>
-    <% end %>
+    <%= link_to "Edit your review", edit_review_path, class: "btn" %>
+    <%= link_to "Delete your review", review_path, method: 'delete', class: "btn" %>
+   

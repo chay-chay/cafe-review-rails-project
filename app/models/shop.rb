@@ -5,7 +5,7 @@ class Shop < ApplicationRecord
   belongs_to :user #optional creator of it (shop added by user)
   has_one_attached :image
   validates :name, :uniqueness => {scope: :state_id, :case_sensitive => false}
-
+ 
   # Ex:- scope :active, -> {where(:active => true)}}
   scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")} #search cafe name
   

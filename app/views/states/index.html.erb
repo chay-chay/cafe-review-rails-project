@@ -1,3 +1,4 @@
+
 <h1> All States </h1>
 
 <%= form_tag("/states", method: "get") do %>
@@ -10,6 +11,7 @@
 
 <% @states.each do |s| %>
     <li>
+    <br>
         <%= s.name %> <%= link_to "Check it out!", state_path(s.id), class: "btn" %> 
        
     </li>

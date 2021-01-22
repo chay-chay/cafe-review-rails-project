@@ -60,7 +60,7 @@ class ShopsController < ApplicationController
     def destroy
         @shop = Shop.find(params[:id])
         @shop.destroy
-        redirect_to shops_path 
+        redirect_to shops_path, danger: "Your cafe has been delete."
     end
 
 
@@ -76,11 +76,5 @@ class ShopsController < ApplicationController
         redirect_to shops_path if !@shop
      end
 
-     def redirect_if_not_authorized #make these methods easier to change & DRY.
-        @shop = Shop.find_by_id(params[:id])
-        if @shop.user != current_user
-            
-            redirect_to shops_path, danger: "Only user who created can delete the shop!"
-        end
-    end
+     
 end

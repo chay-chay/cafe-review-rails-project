@@ -1,15 +1,13 @@
-<h1> cafe </h1>
+<h1>  <%= @shop.name %> -  <%= @shop.state.name %> </h1>
 
 <% if @shop.image.attached?%>
 Image: <%= image_tag url_for(@shop.image) %>
 <% end %>
 
-Name: <%= @shop.name %><br>
-State: <%= @shop.state.name %>
+<%= link_to "Write a review", new_shop_review_path(@shop), class: "btn"  %>
 
 
-<% if current_user %>
-<%= link_to "Edit a shop", edit_shop_path(@shop) %>
-<%= link_to "Write a review", new_shop_review_path(@shop) %>
-<%= link_to "delete", shop_path(@shop), method: 'delete' %>
+<% if user_access %>
+    <%= link_to "Edit a shop", edit_shop_path(@shop), class: "btn" %>
+    <%= link_to "Delete", shop_path(@shop), method: 'delete', data: {confirm: "Are you sure?"}, class: "btn" %> 
 <% end %>
