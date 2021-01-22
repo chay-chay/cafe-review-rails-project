@@ -6,7 +6,10 @@ Image: <%= image_tag url_for(@shop.image) %>
 
 Name: <%= @shop.name %><br>
 State: <%= @shop.state.name %>
+
+
+<% if current_user %>
 <%= link_to "Edit a shop", edit_shop_path(@shop) %>
 <%= link_to "Write a review", new_shop_review_path(@shop) %>
 <%= link_to "delete", shop_path(@shop), method: 'delete' %>
-
+<% end %>

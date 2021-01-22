@@ -1,7 +1,10 @@
 class ShopsController < ApplicationController
+    add_flash_types :success, :info, :warning, :danger
     before_action :redirect_if_not_logged_in
-    
+    before_action :redirect_if_not_authorized, only: [:edit, :update, :destroy]
+
     def index
+        
         @shop =  Shop.find_by_id(params[:id])
         if params[:name]
             @shops = Shop.search_by_name(params[:name])
@@ -35,10 +38,13 @@ class ShopsController < ApplicationController
     end
 
     def edit 
+        
         @shop = Shop.find_by_id(params[:id])
+       
     end
 
     def update
+        
         @shop = Shop.find(params[:id])
         @shop.update(shop_params)
         if @shop.valid?
@@ -69,4 +75,12 @@ class ShopsController < ApplicationController
         @shop = Shop.find_by_id(params[:id])
         redirect_to shops_path if !@shop
      end
+
+     def redirect_if_not_authorized #make these methods easier to change & DRY.
+        @shop = Shop.find_by_id(params[:id])
+        if @shop.user != current_user
+            
+            redirect_to shops_path, danger: "Only user who created can delete the shop!"
+        end
+    end
 end

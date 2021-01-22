@@ -1,33 +1,32 @@
 <h1>Review </h1>
-<br>
-Cafe Name: <%= @review.shop.name%>
-<br>
-<br>
+    <br>
+    Cafe Name: <%= @review.shop.name%>
+    <br>
+    <br>
 
-State: <%= @review.name_state %>
-<br>
-<br>
-Average Rating of Cafe: <%= @review.avg_rating %>
+    State: <%= @review.name_state %>
+    <br>
+    <br>
+    Average Rating of Cafe: <%= @review.avg_rating %>
 
-<br>
-<br> 
-<%= @review.count_reviews %> Reviews
+    <br>
+    <br> 
+    <%= @review.count_reviews %> Reviews
 
-<br>
-<br>
-Review: <%= @review.content %>
-<br>
+    <br>
+    <br>
+    Review: <%= @review.content %>
+    <br>
 
-<% @review.blank_stars.times do %>
- <span class="glyphicon glyphicon-star-empty"></span>
-<% end %>
+    <% @review.blank_stars.times do %>
+    <span class="glyphicon glyphicon-star-empty"></span>
+    <% end %>
 
+    Rating: <%= @review.rating %>
+    <br>
+    Username: <%= @review.user.username %>
+    <br>
 
-Rating: <%= @review.rating %>
-<br>
-Username: <%= @review.user.username %>
- <br>
-
-  <% if logged_in? %>
-           <%= link_to "Edit your review", edit_review_path %>
-<% end %>
+    <% if logged_in? %>
+            <%= link_to "Edit your review", edit_review_path %>
+    <% end %>
