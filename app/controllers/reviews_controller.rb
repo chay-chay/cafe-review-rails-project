@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
-  before_action :redirect_if_not_authorized, only: [:edit, :update, :destroy]
+  # before_action :redirect_if_not_authorized, only: [:edit, :update, :destroy]
   add_flash_types :success, :info, :warning, :danger
     def new
         if @shop = Shop.find_by_id(params[:shop_id]) #nested

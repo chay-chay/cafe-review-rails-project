@@ -33,7 +33,7 @@
     <br>
     Date: <%= @review.created_at.strftime("%b %d, %Y - %I:%M%p")%>
    
-
+<% if @shop.try(:user) != current_user %>
     <%= link_to "Edit your review", edit_review_path, class: "btn" %>
     <%= link_to "Delete your review", review_path, method: 'delete', class: "btn" %>
-
+<% end %>

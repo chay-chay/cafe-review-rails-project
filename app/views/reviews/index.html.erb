@@ -14,14 +14,16 @@
             <br>
             Date: <%= r.created_at.strftime("%b %d, %Y - %I:%M%p")%>
             </li>
-            <%= link_to "Edit your review", edit_review_path(r.id), class: "btn" %>
-        <%= link_to "Delete your review", review_path(r.id), method: 'delete', class: "btn" %>
+          
             <br>  
         <% end %>  
     <ol>
  <br>
 
-
+<% if @shop.reviews != current_user %>
+    <%= link_to "Edit your review", edit_review_path, class: "btn" %>
+    <%= link_to "Delete your review", review_path, method: 'delete', class: "btn" %>
+<% end %>
       
 <%= render "check_blank" %> 
 <%= link_to "Back to the all cafe", shops_path, class: "btn" %>
