@@ -10,6 +10,7 @@ class ShopsController < ApplicationController
         else
             @shops = Shop.alpha
         end
+        
     end
     
     def new
@@ -25,7 +26,7 @@ class ShopsController < ApplicationController
             @shop.image.purge
             @shop.image.attach(params[:shop][:image])
 
-            redirect_to shop_path(@shop), success: "Thank you for adding a cafe."
+            redirect_to shop_reviews_path(@shop), success: "Thank you for adding a cafe."
         else
             @shop.build_state
             render :new
@@ -50,7 +51,7 @@ class ShopsController < ApplicationController
             @shop.image.purge
             @shop.image.attach(params[:shop][:image])
 
-            redirect_to shops_path, success: "Update successful!"
+            redirect_to shop_reviews_path(@shop), success: "Update successful!"
         else
             render :edit 
         end

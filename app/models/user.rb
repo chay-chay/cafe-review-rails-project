@@ -14,6 +14,7 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true
     # validates :password, presence: true, length: { in: 6..20 }, on: :create
+    has_one_attached :avatar 
 
     def self.from_omniauth(response)
         User.find_or_create_by(uid: response[:uid], provider: response[:provider]) do |u|

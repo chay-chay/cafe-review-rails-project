@@ -25,4 +25,5 @@ class Review < ApplicationRecord
     Review.count(:rating)
   end
 
+
 end

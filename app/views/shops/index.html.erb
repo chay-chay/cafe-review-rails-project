@@ -1,29 +1,22 @@
-
 <h1> All Cafe </h1>
-<%= form_tag("/shops", method: "get") do %>
-    <%= label_tag(:name, "Search by cafe name:") %>
-    <%= text_field_tag(:name) %>
-    <%= submit_tag("Search") %>
-<% end %>
 
-        <% @shops.each do |s| %>
+<%= render 'search' %>
+
+<div class="shop-index">
+    <% @shops.each do |s| %>
         <li>
-            <% if s.image.attached? %>
-                <%= image_tag url_for(s.image) %>
-            <% end %>
+        <%= render partial: 'states/image', locals: {s: s} %>
             Cafe name: <%= s.name  %> 
             State: <%= s.state.try(:name) %>
             <br>
-                <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
-                <%= link_to "Write a review", new_shop_review_path(s.id), :class => "btn"%>
-            
-                <% if s.user_id = current_user %>
-                <%= link_to "Edit a shop", edit_shop_path(s.id), class: "btn"%>
-                <%= link_to "Delete", shop_path(s.id), method: 'delete', data: {confirm: "Are you sure?"}, :class => "btn" %> 
-                <br>
-                <% end %>
-            
-            
+            <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
+            <%= link_to "Write a review", new_shop_review_path(s.id), :class => "btn"%>
+            <% if s.user_id == current_user %>
+            <%= link_to "Edit a shop", edit_shop_path(s.id), class: "btn"%>
+            <%= link_to "Delete", shop_path(s.id), method: 'delete', data: {confirm: "Are you sure?"}, :class => "btn" %> 
+            <br>
             <% end %>
-                <br>
-   
+        <% end %>
+            <br>
+</div>
+        

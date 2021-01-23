@@ -5,6 +5,7 @@
   <h2>SIGNUP</h2>
 <%= render partial: 'layouts/errors', locals: {object: @user} %>
     <%= form_for(:user) do |f| %>
+
         <div class="user-box">
           <%= f.text_field :username %>
           <%= f.label :username %>

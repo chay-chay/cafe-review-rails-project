@@ -1,14 +1,14 @@
 <h1>  <%= @shop.name %> -  <%= @shop.state.name %> </h1>
 
-<% if @shop.image.attached?%>
-Image: <%= image_tag url_for(@shop.image) %>
-<% end %>
+<%= render partial: 'states/image', locals: {s: @shop} %>
+
+
 
 <%= link_to "Check out the review", shop_reviews_path(@shop), :class => "btn"%>
 <%= link_to "Write a review", new_shop_review_path(@shop), class: "btn"  %>
-
 
 <% if user_access %>
     <%= link_to "Edit a shop", edit_shop_path(@shop), class: "btn" %>
     <%= link_to "Delete", shop_path(@shop), method: 'delete', data: {confirm: "Are you sure?"}, class: "btn" %> 
 <% end %>
+

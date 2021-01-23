@@ -1,14 +1,15 @@
 <h1>Review </h1>
     <br>
+    <% if @review.shop.image.attached?%>
+        <%= image_tag url_for(@review.shop.image) %>
+    <% end %>
     Cafe Name: <%= @review.shop.name%>
     <br>
     <br>
-
     State: <%= @review.name_state %>
     <br>
     <br>
     Average Rating of Cafe: <%= @review.avg_rating %>
-
     <br>
     <br> 
     <%= @review.count_reviews %> Reviews
@@ -30,8 +31,9 @@
     Username: <%= @review.user.username %>
     <br>
     <br>
+    Date: <%= @review.created_at.strftime("%b %d, %Y - %I:%M%p")%>
+   
 
-    <%= link_to "Back to the #{@review.shop.name} - #{@review.name_state} ", shop_path, class: "btn" %>
     <%= link_to "Edit your review", edit_review_path, class: "btn" %>
     <%= link_to "Delete your review", review_path, method: 'delete', class: "btn" %>
-   
+

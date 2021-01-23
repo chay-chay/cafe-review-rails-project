@@ -1,27 +1,27 @@
 <h1> All reviews  </h1> 
-
     <ol>
         <% @reviews.each do |r| %>
             <li>
-                Cafe Name: <%= r.shop.name %>
-                <br>
-                Average Rating of Cafe: <%= r.avg_rating %>
-                <br>
-                Review: <%= r.content %>
-                <br>
-                Rating: <%= r.rating %>
-                <br>
-                Username: <%= r.user.username %>
-                <br>
-                Date: <%= r.created_at.strftime("%b %d, %Y - %I:%M%p")%>
+            Cafe Name: <%= r.shop.name %>
+            <br>
+            Average Rating of Cafe: <%= r.avg_rating %>
+            <br>
+            Review: <%= r.content %>
+            <br>
+            Rating: <%= r.rating %>
+            <br>
+            Username: <%= r.user.username %>
+            <br>
+            Date: <%= r.created_at.strftime("%b %d, %Y - %I:%M%p")%>
             </li>
-                <br>      
+            <%= link_to "Edit your review", edit_review_path(r.id), class: "btn" %>
+        <%= link_to "Delete your review", review_path(r.id), method: 'delete', class: "btn" %>
+            <br>  
         <% end %>  
     <ol>
+ <br>
 
-    <% if @reviews.blank? %>
-        <%= "No reviews just yet, would you like to add the first?" %>
-        <%= link_to "Write a review", new_shop_review_path, class: "btn" %>
-    <% end %>
 
-<%= link_to "Back to the all cafe", shops_path(@reviews), class: "btn" %>
+      
+<%= render "check_blank" %> 
+<%= link_to "Back to the all cafe", shops_path, class: "btn" %>

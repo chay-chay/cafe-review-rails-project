@@ -1,21 +1,15 @@
 
 <h1> All States </h1>
 
-<%= form_tag("/states", method: "get") do %>
-    <%= label_tag(:name, "Search by state name:") %>
-    <%= text_field_tag(:name) %>
-    <%= submit_tag("Search") %>
-<% end %>
-
-<ul>
-
-<% @states.each do |s| %>
-    <li>
-        <br>
-        <br>
-        <%= s.name %> <%= link_to "Check it out!", state_path(s.id), class: "btn" %> 
-       
-    </li>
-
-<% end %>
-</ul>
+<%= render 'search' %>
+<div class="state-index">
+    <ul>
+        <% @states.each do |s| %>
+            <li>
+                <br>
+                <br>
+            <%= s.name %> <%= link_to "Check it out!", state_path(s.id), class: "btn" %> 
+            </li>
+        <% end %>
+    </ul>
+</div>

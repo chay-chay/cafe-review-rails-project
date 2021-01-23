@@ -9,7 +9,7 @@ module ApplicationHelper
 
     def redirect_if_not_authorized 
         @shop = Shop.find_by_id(params[:id])
-        if @shop.user != current_user
+        if @shop.try(:user) != current_user
             
             redirect_to shops_path, danger: "Only user who created can delete the shop!"
         end
