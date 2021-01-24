@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
+
   post '/rate' => 'rater#create', :as => 'rate'
   root 'sessions#home'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
