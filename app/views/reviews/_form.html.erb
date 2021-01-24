@@ -1,27 +1,27 @@
   <%= form_for(@review) do |f| %>
     <% if params[:shop_id] %>
       <%= f.hidden_field :shop_id %>
-    Add review for cafe: <%= @review.shop.name %> 
-    <br>
-    <br>
-    State:  <%= @review.shop.state.name %>
+      Add review for cafe: <%= @review.shop.name %> 
+      <br>
+      <br>
+      State:  <%= @review.shop.state.name %>
 
-  <% else %>
-    <h1 style="margin:3rem"> Cafe review </h1>
+    <% else %>
+      <h1 style="margin:3rem"> Cafe review </h1>
       <div>
       <%= f.label :shop_id, "Select an cafe" %>
       <%= f.collection_select :shop_id, Shop.alpha, :id, :name_state, include_blank: true %>
-    </div>
-<% end %>
+      </div>
+    <% end %>
 
-  <%= f.label :rating %>
-  <%= f.number_field :rating, min:0, max:5 %>
+      <%= f.label :rating %>
+      <%= f.number_field :rating, min:0, max:5 %>
  
-  <br>
-  <br>
-  <%= f.label :content %>
-  <br>
-  <%= f.text_area :content, size: "50x10" %>
-  <br>
-  <%= f.submit :class => 'btn' %>
-<% end %>
+      <br>
+      <br>
+      <%= f.label :content %>
+      <br>
+      <%= f.text_area :content, size: "50x10" %>
+      <br>
+      <%= f.submit :class => 'btn' %>
+    <% end %>
