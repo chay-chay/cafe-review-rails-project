@@ -1,29 +1,25 @@
 <h1>Review </h1>
     <br>
-    <% if @review.shop.image.attached?%>
-        <%= image_tag url_for(@review.shop.image) %>
+    <% if @shop.image.attached?%>
+        <%= image_tag url_for(@shop.image) %>
     <% end %>
-    Cafe Name: <%= @review.shop.name%>
+    Cafe Name: <%= @shop.name%>
     <br>
     <br>
-    State: <%= @review.name_state %>
+    State: <%= @shop.name_state %>
     <br>
     <br>
     Average Rating of Cafe: <%= @review.avg_rating %>
     <br>
     <br> 
-    <%= @review.count_reviews %> Reviews
-
+    <%= @review.count_reviews %> Review
     <br>
     <br>
     Review: <%= @review.content %>
     <br>
-
     <% @review.blank_stars.times do %>
     <span class="glyphicon glyphicon-star-empty"></span>
     <% end %>
-<link rel="stylesheet" href="jquery.raty.css">
-<script src="jquery.raty.js"></script>
 
 <div></div>
     Rating: <%= @review.rating %>
@@ -33,7 +29,7 @@
     <br>
     Date: <%= @review.created_at.strftime("%b %d, %Y - %I:%M%p")%>
    
-<% if @shop.try(:user) != current_user %>
+<% if user_authorized_for_review %>
     <%= link_to "Edit your review", edit_review_path, class: "btn" %>
-    <%= link_to "Delete your review", review_path, method: 'delete', class: "btn" %>
+    <%= link_to "Delete your review", review_path, method: 'delete', method: 'delete',data: {confirm: "Are you sure?"}, class: "btn" %>
 <% end %>

@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
-  # before_action :redirect_if_not_authorized, only: [:edit, :update, :destroy]
+  before_action :redirect_if_not_authorized_review, only: [:edit, :update, :destroy]
   add_flash_types :success, :info, :warning, :danger
     def new
         if @shop = Shop.find_by_id(params[:shop_id]) #nested
@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
 
     def show
         @review = Review.find_by_id(params[:id])
-        @review.shop
+        @shop = @review.shop
       end
 
       def edit 
@@ -36,6 +36,7 @@ class ReviewsController < ApplicationController
 
     def update
         @review = Review.find(params[:id])
+        
         @review.update(review_params)
         if @review.valid?
             redirect_to review_path, success: "Update successful!"
@@ -45,6 +46,7 @@ class ReviewsController < ApplicationController
     end
 
     def index
+   
         if @shop = Shop.find_by_id(params[:shop_id])
             #Check for nested like shop/1/reviews and valid id
             @reviews = @shop.reviews

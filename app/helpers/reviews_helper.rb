@@ -5,4 +5,8 @@ module ReviewsHelper
             link_to "Write a review", new_shop_review_path, class: "btn"
         end
     end
+
+    def user_authorized_for_review
+        @review.user == current_user
+    end
 end

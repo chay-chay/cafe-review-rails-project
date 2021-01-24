@@ -8,8 +8,9 @@
             <li>
                 <br>
                 <br>
-            <%= s.name %> <%= link_to "Check it out!", state_path(s.id), class: "btn" %> 
+            <%= link_to "#{s.name}", state_path(s.id), class: "btn" %> 
             </li>
         <% end %>
     </ul>
 </div>
+

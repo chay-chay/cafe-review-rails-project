@@ -13,7 +13,8 @@ class StatesController < ApplicationController
 
     def show
         @state = State.find_by_id(params[:id])
-        @shop =  Shop.find_by_id(params[:id])
+        @shop = Shop.find_by_id(params[:id])
+     
         
     end
 

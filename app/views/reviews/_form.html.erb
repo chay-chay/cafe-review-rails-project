@@ -16,11 +16,12 @@
 
   <%= f.label :rating %>
   <%= f.number_field :rating, min:0, max:5 %>
+ 
   <br>
   <br>
   <%= f.label :content %>
   <br>
   <%= f.text_area :content, size: "50x10" %>
   <br>
-  <%= f.submit %>
+  <%= f.submit :class => 'btn' %>
 <% end %>

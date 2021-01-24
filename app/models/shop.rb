@@ -14,9 +14,10 @@ class Shop < ApplicationRecord
   validates :name, presence: true
   # validate :shop_unique
   before_save :upcase_fields
-
+  scope :alpha, -> {order(:name)}
   #where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
   
+ 
   # accepts_nested_attributes_for :state 
   def state_attributes=(attributes) #add state in the cafe 
     if !attributes[:name].blank? 
@@ -32,9 +33,6 @@ class Shop < ApplicationRecord
     end
   end
 
-  def self.alpha
-    order(:name, :state)
-  end
 
   def name_state
     "#{name} - #{state.try(:name)}"

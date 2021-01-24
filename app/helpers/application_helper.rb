@@ -11,10 +11,15 @@ module ApplicationHelper
         @shop = Shop.find_by_id(params[:id])
         if @shop.try(:user) != current_user
             
-            redirect_to shops_path, danger: "Only user who created can delete the shop!"
+            redirect_to shops_path, danger: "Only user who created can edit or delete the shop!"
         end
     end
 
-    
+    def redirect_if_not_authorized_review
+        @review = Review.find_by_id(params[:id])
+        if @review.user != current_user
+            redirect_to reviews_path, danger: "Only user who created can edit or delete the review!"
+        end
+    end
 
 end
