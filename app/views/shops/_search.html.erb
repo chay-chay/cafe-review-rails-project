@@ -2,6 +2,6 @@
     <%= form_tag("/shops", method: "get") do %>
         <%= label_tag(:name, "Search by cafe name:") %>
         <%= text_field_tag(:name) %>
-        <%= submit_tag("Search") %>
+        <%= submit_tag("Search", class: "btn") %>
     <% end %>
 </div>
