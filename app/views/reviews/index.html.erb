@@ -1,35 +1,42 @@
 <h1> All reviews  </h1> 
-    <ol>
-        <% @reviews.each do |r| %>
-            <li>
-            Cafe Name: <%= r.shop.name %>
-            <br>
-            Average Rating of Cafe: <%= r.avg_rating %>
-            <br>
-            Review: <%= r.content %>
-            <br>
-            Rating: <%= r.rating %>
-            <br>
-            Username: <%= r.user.username %>
-            <br>
-            Date: <%= r.created_at.strftime("%b %d, %Y - %I:%M%p")%>
-            </li>
-          
- <% if @reviews.blank? %>
-    <%= "No reviews just yet, would you like to add the first?" %>
-    <%= link_to "Write a review", new_shop_review_path(r.id), class: "btn" %>
-    <% else %>
-    <%= link_to "Write a review", new_review_path(r.id), class: "btn" %>
-<% end %>  
 
-           
-            <%= render partial: "button", locals: {r:r} %> 
-            <br>  
-        <% end %>  
-    <ol>
- <br>
-
-
-       
+<%= render 'shops/search' %>  
 
 <%= link_to "Back to the all cafe", shops_path, class: "btn" %>
+
+
+<div class="container-fluid" style="margin-top:3rem">
+    <div class="row" style="text-align:left" >
+        <% @reviews.each do |r| %>
+            <div class="col-md-3"  style="display:inline-block" >
+                <div class="card">
+                    <div class="card-body text-review" style="background-color: #7f5539"> 
+                        
+                            <p style="line-height:0.7">Cafe Name: <%= r.shop.name %></p>
+                            
+                            <p style="line-height:0.7">Average Rating of Cafe: <%= r.avg_rating %></p>
+                            
+                            <p style="line-height:1.3">Review: <%= r.content %></p>
+                            
+                            <p style="line-height:0.7">Rating: <%= r.rating %></p>
+                            
+                            <p style="line-height:0.7">Username: <%= r.user.username %></p>
+                            
+                            Date: <%= r.created_at.strftime("%b %d, %Y - %I:%M%p")%>
+                            <div style="margin:2rem">
+                            <% if @reviews.blank? %>
+                                <%= "No reviews just yet, would you like to add the first?" %>
+                                <%= link_to "Write a review", new_shop_review_path(r.id), class: "btn" %>
+                            <% else %>
+                                <%= link_to "Write a review", new_review_path(r.id), class: "btn" %>
+                            <% end %>  
+                            </div>
+                            <div style="margin:2rem">
+                            <%= render partial: "button", locals: {r:r} %> 
+                            </div>
+                    </div>   
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

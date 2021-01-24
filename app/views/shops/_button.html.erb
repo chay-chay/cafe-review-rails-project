@@ -1,0 +1,4 @@
+  <% if user_access %>
+    <%= link_to "Edit a shop", edit_shop_path(s), class: "btn" %>
+    <%= link_to "Delete", shop_path(s), method: 'delete', data: {confirm: "Are you sure?"}, class: "btn" %> 
+<% end %>
