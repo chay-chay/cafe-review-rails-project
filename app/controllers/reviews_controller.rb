@@ -54,7 +54,7 @@ class ReviewsController < ApplicationController
             #it's not nested routes
             @reviews = Review.all
           end
-       
+      
     end
 
     def destroy

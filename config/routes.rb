@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  post '/rate' => 'rater#create', :as => 'rate'
   root 'sessions#home'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
   get '/login' => 'sessions#new'
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources :states
   resources :users
+  get '*path' => redirect('/')
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

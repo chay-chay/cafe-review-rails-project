@@ -2,23 +2,25 @@
 
 <%= render 'search' %>
 
-<div class="shop-index">
-    <% @shops.each do |s| %>
-        <li>
-        <%= render partial: 'states/image', locals: {s: s} %>
-            Cafe name: <%= s.name  %> 
-            State: <%= s.state.try(:name) %>
-            <br>
-            <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
-            <%= link_to "Write a review", new_shop_review_path(s.id), :class => "btn"%>
-            <% if s.user_id == current_user %>
-            <%= link_to "Edit a shop", edit_shop_path(s.id), class: "btn"%>
-            <%= link_to "Delete", shop_path(s.id), method: 'delete', data: {confirm: "Are you sure?"}, :class => "btn" %> 
-            <br>
-            <% end %>
+
+<div class="container-fluid">
+    <div class="row" >
+        <% @shops.each do |s| %>
+            <div class="col-md-4"  style="display:inline-block" >
+                <div class="card">
+                    <div class="card-body" style="background-color: #7f5539"> 
+                           <%= render partial: 'states/image', locals: {s: s} %>
+                            <%= s.name  %>  - <%= s.state.try(:name) %>
+                            <div style="padding:2rem">
+                            <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
+                            </div>
+                            <div>
+                            <%= link_to "Write a review", new_shop_review_path(s.id), :class => "btn" %>  
+                            </div>
+                         <%= render partial: 'edit_shop', locals: {s: s} %>   
+                    </div>   
+                </div>
+            </div>
         <% end %>
-            <br>
+    </div>
 </div>
-
-
-      

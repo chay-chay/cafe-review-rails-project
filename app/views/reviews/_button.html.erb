@@ -1,0 +1,5 @@
+ 
+ <% if r.user == current_user %>
+    <%= link_to "Edit your review", edit_review_path(r.id), class: "btn" %>
+    <%= link_to "Delete your review", review_path(r.id), method: 'delete',data: {confirm: "Are you sure?"}, class: "btn" %>
+<% end %>

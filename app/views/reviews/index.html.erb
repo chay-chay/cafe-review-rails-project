@@ -14,11 +14,16 @@
             <br>
             Date: <%= r.created_at.strftime("%b %d, %Y - %I:%M%p")%>
             </li>
-            <%= render partial: "check_blank", locals: {r:r} %> 
-            <% if r.user == current_user %>
-            <%= link_to "Edit your review", edit_review_path(r.id), class: "btn" %>
-            <%= link_to "Delete your review", review_path(r.id), method: 'delete',data: {confirm: "Are you sure?"}, class: "btn" %>
-            <% end %>
+          
+ <% if @reviews.blank? %>
+    <%= "No reviews just yet, would you like to add the first?" %>
+    <%= link_to "Write a review", new_shop_review_path(r.id), class: "btn" %>
+    <% else %>
+    <%= link_to "Write a review", new_review_path(r.id), class: "btn" %>
+<% end %>  
+
+           
+            <%= render partial: "button", locals: {r:r} %> 
             <br>  
         <% end %>  
     <ol>

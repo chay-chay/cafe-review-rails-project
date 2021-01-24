@@ -10,7 +10,7 @@ class Review < ApplicationRecord
   scope :avg_rating, -> {self.average(:rating)}
 
   def blank_stars #check how to show starts
-    5 - rating.to_i
+    Review.average(:rating).to_i
    end
 
    def name_state

@@ -1,3 +1,6 @@
 <% if s.image.attached? %>
     <%= image_tag url_for(s.image) %>
+    <% else %>
+    <%= image_tag("nathan-dumlao-unsplash.png") %>
 <% end %>
+
