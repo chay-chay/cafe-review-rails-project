@@ -54,7 +54,8 @@ class ReviewsController < ApplicationController
             #it's not nested routes
             @reviews = Review.all
           end
-      
+          @shop = Shop.find_by_id(params[:shop_id])
+          @shop_review = @shop.reviews
     end
 
     def destroy

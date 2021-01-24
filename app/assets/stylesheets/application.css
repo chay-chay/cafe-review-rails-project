@@ -361,7 +361,7 @@ figcaption {
 .c-label {
   display: inline-block;
   color: #eee;
-  background-color: rgba(48, 30, 32, 0.9);
+  background-color: rgba(48, 30, 32, 0.9);/*rgb(70 61 62 / 90%)*/
   line-height: 1;
   padding: 0.5em 0.9em;
   margin-right: 0.5em;
@@ -505,4 +505,21 @@ text-align: center;
 /*text review*/
 .text-review{
   color: #ccc6be;
+}
+
+/* background-card */
+.bg-card{
+  background-color: #31271e;
+}
+
+/* review show*/
+.img-rev{
+  float:left;
+  margin-left: 3rem;
+}
+
+.margin-show-rev{
+  margin-left: 3rem;
+  margin-top: 1rem;
+  line-height: 0.7; 
 }

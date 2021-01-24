@@ -8,7 +8,7 @@
         <% @shops.each do |s| %>
             <div class="col-md-4"  style="display:inline-block" >
                 <div class="card">
-                    <div class="card-body" style="background-color: #7f5539"> 
+                    <div class="card-body bg-card"> 
                            <%= render partial: 'states/image', locals: {s: s} %>
                             <%= s.name  %>  - <%= s.state.try(:name) %>
                             <div style="padding:2rem">
