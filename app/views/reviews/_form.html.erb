@@ -21,6 +21,8 @@
                                 </div>
                               <% end %>
                               </div>
+                                
+                               
                                 <%= f.label :rating %>
                                 <%= f.number_field :rating, min:0, max:5 %>
                           
@@ -41,3 +43,10 @@
         <% end %>
     </div>
 </div>
+
+<script>
+$(‘#rating-form’).raty({
+path: ‘/assets/’,
+scoreName: ‘review[rating]’
+});
+</script>

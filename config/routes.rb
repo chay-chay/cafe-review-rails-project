@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   root 'sessions#home'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
   get '/login' => 'sessions#new'

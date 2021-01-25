@@ -9,9 +9,10 @@ class Review < ApplicationRecord
   
   scope :avg_rating, -> {self.average(:rating)}
 
-  def blank_stars #check how to show starts
-    Review.average(:rating).to_i
-   end
+  
+  # def blank_stars #check how to show starts
+  #   Review.average(:rating).to_i
+  #  end
 
    def name_state
    self.shop.state.name
@@ -22,7 +23,9 @@ class Review < ApplicationRecord
   end
 
   def count_reviews
-    Review.count(:rating)
+    count = Shop.find_by_id(shop_id)
+    count.reviews.size
+    #count(:rating)
   end
 
 
