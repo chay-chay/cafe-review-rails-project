@@ -8,7 +8,7 @@ class Review < ApplicationRecord
   # Ex:- scope :active, -> {where(:active => true)}
   
   scope :avg_rating, -> {self.average(:rating)}
-
+  
   
   # def blank_stars #check how to show starts
   #   Review.average(:rating).to_i

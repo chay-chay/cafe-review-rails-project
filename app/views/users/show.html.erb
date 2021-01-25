@@ -1,20 +1,12 @@
 
-<div class="container-fluid shop-show " >
-    <div class="row" >
-            <div class="col-md-6">
-                <%= image_tag("daria-volkova-unsplash.jpg", class: "welcome-img") %>
-                </div>
-                <div class="welcome-text">
+<div class="container-fluid">
+            <%= image_tag("daria-volkova-unsplash.jpg", class: "welcome-img") %>
+                <p class="credit">credit all pictures from unsplash</p>
+                <div class="init-img">
                 <%= render 'users/user' %>
-                <h1> Welcome <%= @user.username %> ! </h1>
                 </div>
-                
-                <p>Credit pictures from unsplash</p>
-                <div >
-                
-                </div>
-            </div>
-        </div>
+                <h1 class="welcome-text"> Welcome <%= @user.username %> ! </h1>   
+</div>
         
 
    
