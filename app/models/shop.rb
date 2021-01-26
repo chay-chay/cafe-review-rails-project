@@ -7,6 +7,7 @@ class Shop < ApplicationRecord
   validates :name, :uniqueness => {scope: :state_id, :case_sensitive => false}
  
   # Ex:- scope :active, -> {where(:active => true)}}
+  #where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
   scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")} #search cafe name
   
   # scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
@@ -15,7 +16,7 @@ class Shop < ApplicationRecord
   # validate :shop_unique
   before_save :upcase_fields
   scope :alpha, -> {order(:name)}
-  #where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
+  
   
  
   # accepts_nested_attributes_for :state 
@@ -46,8 +47,5 @@ class Shop < ApplicationRecord
     Review.average(:rating)
   end
  
-  
-
-
   
 end

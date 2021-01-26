@@ -4,9 +4,9 @@ class ShopsController < ApplicationController
     before_action :redirect_if_not_authorized, only: [:edit, :update, :destroy]
 
     def index
-        @shop =  Shop.find_by_id(params[:id])
+        set_shop
         if params[:name]
-            @shops = Shop.search_by_name(params[:name])
+            @shops = Shop.search_by_name(params[:name]).alpha
         else
             @shops = Shop.alpha
         end
@@ -34,18 +34,18 @@ class ShopsController < ApplicationController
     end
 
     def show
-        @shop = Shop.find_by_id(params[:id])
+        set_shop
     end
 
     def edit 
         
-        @shop = Shop.find_by_id(params[:id])
+        set_shop
        
     end
 
     def update
         
-        @shop = Shop.find(params[:id])
+        set_shop
         @shop.update(shop_params)
         if @shop.valid?
             @shop.image.purge
@@ -58,7 +58,7 @@ class ShopsController < ApplicationController
     end
 
     def destroy
-        @shop = Shop.find(params[:id])
+        set_shop
         @shop.destroy
         redirect_to shops_path, danger: "Your cafe has been delete."
     end
@@ -73,7 +73,7 @@ class ShopsController < ApplicationController
 
     def set_shop
         @shop = Shop.find_by_id(params[:id])
-        redirect_to shops_path if !@shop
+        
      end
 
      

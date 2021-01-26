@@ -1,11 +1,13 @@
 
 <div class="container-fluid">
-            <%= image_tag("daria-volkova-unsplash.jpg", class: "welcome-img") %>
-                <p class="credit">credit all pictures from unsplash</p>
-                <div class="init-img">
-                <%= render 'users/user' %>
-                </div>
-                <h1 class="welcome-text"> Welcome <%= @user.username %> ! </h1>   
+    <%= image_tag("daria-volkova-unsplash.jpg", class: "welcome-img") %>
+    <p class="credit">credit all pictures from unsplash</p>
+    <div class="init-img">
+    <%= render 'users/user' %>
+    </div>
+    <div class="container welcome-section">
+    <h1 class="welcome-text"> Welcome <%= @user.username %> ! </h1>  
+    </div> 
 </div>
         
 

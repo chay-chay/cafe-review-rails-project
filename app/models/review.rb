@@ -7,14 +7,14 @@ class Review < ApplicationRecord
   validates :user, :uniqueness => {scope: :shop}
   # Ex:- scope :active, -> {where(:active => true)}
   
-  scope :avg_rating, -> {self.average(:rating)}
-  
-  
+  # scope :avg_rating, -> {self.average(:rating).to_i}
+
+ 
   # def blank_stars #check how to show starts
   #   Review.average(:rating).to_i
   #  end
 
-   def name_state
+  def name_state
    self.shop.state.name
   end
 

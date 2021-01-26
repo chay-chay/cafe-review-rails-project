@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
 
+  
   resources :reviews
   resources :shops do
     resources :reviews, only: [:new, :index, :edit]

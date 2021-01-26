@@ -1,12 +1,13 @@
 <h1> All reviews  </h1> 
 
 <%= render 'shops/search' %>  
- <% if @reviews.blank? %>
+<% if @reviews.blank? %>
     <%= "No reviews just yet!  Would you like to add the first review?" %>
-    <%= link_to "Write a review", new_shop_review_path(@reviews), class: "btn" %>
-    <% else %>
-    <%= link_to "Write a review", new_shop_review_path(@reviews), class: "btn" %>
-<% end %> 
+     <%= link_to "Write a review", new_shop_review_path(@shop), class: "btn" %>
+     
+<% end %>
+
+ 
 <%= link_to "Back to the all cafe", shops_path, class: "btn" %>
 
 <div class="container-fluid" style="margin-top:3rem">
@@ -17,15 +18,22 @@
                     <div class="card-body text-review bg-card"> 
                             <p style="line-height:0.7">Cafe Name: <%= r.shop.name %></p>  
                             <p style="line-height:0.7">Average Rating of Cafe: <%= r.avg_rating %></p>   
+                            <p style="line-height:0.7">Total: <%= r.count_reviews %> review(s)</p>
                             <p style="line-height:1.3">Review: <%= r.content %></p> 
-                            <p style="line-height:0.7">Rating: <%= r.rating %></p>
+                            <p style="line-height:0.7">Rating: 
+                            <% r.rating.times do  %>
+                             <i class="bi bi-star-fill"></i> 
+                            <% end %></p> 
                             <p style="line-height:0.7">Username: <%= r.user.username %></p>
                             Date: <%= r.created_at.strftime("%b %d, %Y - %I:%M%p")%>
                             <div style="margin:2rem">
-                            
                             </div>
                             <div style="margin:2rem">
                             <%= render partial: "button", locals: {r:r} %> 
+                            <%= link_to "Write a review", new_shop_review_path(r.id), class: "btn" %>
+    
+   
+
                             </div>
                     </div>   
                 </div>
