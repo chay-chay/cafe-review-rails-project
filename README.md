@@ -1,24 +1,27 @@
-# README
+# Cafe verdict
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Cafe Verdict is an application that allows users to rate cafes base upon their experiences and perceptions of cafes they have visited. 
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+To get started, you need to run the script below.
 
-* System dependencies
+    $ bundle install
 
-* Configuration
+If you would like to run the server, type the below script  
 
-* Database creation
+    $shotgun
 
-* Database initialization
+Then type this script into the browser to run local server
 
-* How to run the test suite
+    $localhost:9393
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## References
 
-* ...
+I use the gem Corneal to create the Sinatra skeleton of my project.
+[Corneal](https://github.com/thebrianemory/corneal)
+
+## License
+
+[MIT License](https://opensource.org/licenses/MIT)
