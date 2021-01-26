@@ -19,9 +19,11 @@ Then type this script the populate the database.
 ## Get started!
 
 If you would like to run the server, type the below script
+
     $ rails s
 
 Then type this script into the browser to run local server
+
     $ http://localhost:3000/
 ## My blog & Walkthrough video
 If you would like to check my blog, here is [My Blog](https://chayanit-chaisri.medium.com/easy-way-to-change-a-numerical-to-star-rating-for-rails-d77a250c0a6f) and [Walkthrough video](https://www.youtube.com/watch?v=2RUtH5Ifw24&t=26s)
