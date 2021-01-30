@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  post '/rate' => 'rater#create', :as => 'rate'
+  
   root 'sessions#home'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
   get '/login' => 'sessions#new'
@@ -10,12 +10,13 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   
+  
   resources :reviews
   resources :shops do
     resources :reviews, only: [:new, :index, :edit]
   end
-  resources :states
-  resources :users
+  resources :states, only: [:show, :index]
+  resources :users, only: [:show, :new]
   get '*path', to: redirect('/'), constraints: lambda { |req|
     req.path.exclude? 'rails/active_storage'
   }
