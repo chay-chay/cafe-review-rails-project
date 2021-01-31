@@ -8,7 +8,7 @@ class StatesController < ApplicationController
         else
             @states = State.alpha
         end
-
+       
     
     end
 

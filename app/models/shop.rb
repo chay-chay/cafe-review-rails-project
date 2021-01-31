@@ -10,6 +10,7 @@ class Shop < ApplicationRecord
   scope :alpha, -> {order(:name)}
   scope :most_rated, -> { left_joins(:reviews).group("shops.id").order("count(rating) DESC")}
   scope :cafe_average_rating, -> { left_joins(:reviews).group("shops.id").order("avg(reviews.rating) DESC")}
+  
   scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")} #search cafe name
   # scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')} - left join to keep alll data
   # Ex:- scope :active, -> {where(:active => true)}}
@@ -17,17 +18,21 @@ class Shop < ApplicationRecord
 
   #validation
   validates :name, presence: true
-  # validate :shop_unique
+  validate :shop_unique
   before_save :upcase_fields
 
  
   # accepts_nested_attributes_for :state 
   def state_attributes=(attributes) #add state in the cafe 
     if !attributes[:name].blank? 
-        self.state = State.find_or_create_by(name: attributes[:name].upcase)#attributes is a hash of key value pairs
+        self.state = State.find_or_create_by(name: attributes[:name].upcase)
+        #attributes is a hash of key value pairs
+         #attributes = {"name"=>"COCO cafe")
+        #find or create a state based on the attributes sent in
     end
   end
 
+   #custom reader/writer methods 
   def shop_unique
     # if there is already a shop with same state, throw an error
     shop_exits = Shop.find_by(name: name, state_id: state_id)

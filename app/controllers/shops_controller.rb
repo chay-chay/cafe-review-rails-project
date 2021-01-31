@@ -3,6 +3,7 @@ class ShopsController < ApplicationController
     before_action :redirect_if_not_logged_in
     before_action :redirect_if_not_authorized, only: [:edit, :update, :destroy]
     before_action :set_shop, except: [:new, :create]
+    
     def index
         set_shop
         if params[:name]

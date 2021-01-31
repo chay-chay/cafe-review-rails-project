@@ -62,14 +62,18 @@
 
         <li class="nav-item">
           <%= link_to "Write a review", new_review_path, class: 'nav-link' %>
-        </li>     
-      </ul> 
-
-       <span class="navbar-text"> 
-       <li class="nav-item">
-         
-          <%= link_to "Login", login_path, class: 'nav-link' %>
+        </li> 
+        
+          <% if logged_in? %>
+        <li class="nav-item">
+          <%= link_to "Your reviews", user_path(current_user), class: 'nav-link' %>
         </li>
+        <% end %>
+
+        <li class="nav-item">
+           <%= link_to "Login", login_path, class: 'nav-link' %>
+        </li>    
+        
 
       </span>
      

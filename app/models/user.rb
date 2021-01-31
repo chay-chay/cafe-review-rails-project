@@ -10,10 +10,14 @@ class User < ApplicationRecord
 
     #options 3
     #has_many :shops #this are shops that they created
-    has_many :created_shops, class_name: "Shop" #creted Use this
+    # has_many :created_shops, class_name: "Shop" #Jenn recommened this one for creted use this code.
 
     # has_one :shop #optional that they have created
     has_secure_password
+     # validate the presence of password
+    # gives us these methods:  .password=, .authenticate, .password
+    # validates :username, presence: true, on: :update 
+
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true
     # validates :password, presence: true, length: { in: 6..20 }, on: :create
