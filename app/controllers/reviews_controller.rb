@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
         # @review = Review.new(review_params)
         @review = current_user.reviews.build(review_params)
         #@review.user_id = session[:user_id]
+ 
         if @review.save  
           redirect_to review_path(@review), success: "Thank you for your review submission."
         else
@@ -49,12 +50,14 @@ class ReviewsController < ApplicationController
    
         if @shop = Shop.find_by_id(params[:shop_id])
             #Check for nested like shop/1/reviews and valid id
-            @reviews = @shop.reviews
+            @reviews = @shop.reviews.order_by_review
           else
             #it's not nested routes
-            @reviews = Review.all
+            @reviews = Review.order_by_review
           end
-       
+          # @shop = Shop.find_by_id(params[:shop_id])
+          # @shop_review = @shop.reviews
+          
     end
 
     def destroy
@@ -62,6 +65,8 @@ class ReviewsController < ApplicationController
       @review.destroy
       redirect_to shop_path, danger: "Your review has been delete."
   end
+
+
 
     private
 

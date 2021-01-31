@@ -1,2 +1,33 @@
 
-Welcome <%= @user.username %> !
+<div class="container-fluid">
+    <%= image_tag("daria-volkova-unsplash.jpg", class: "welcome-img") %>
+    <p class="credit">credit all pictures from unsplash</p>
+    <div class="init-img">
+    <%= render 'users/user' %>
+    </div>
+    <div class="container welcome-section">
+    <h1 class="welcome-text"> Welcome <%= @user.username %> ! </h1>  
+    </div> 
+</div>
+
+<div class="container-fluid shop-show" >
+
+        <div class="col-md-6" >
+            <div class="card user-card">
+                <div class="card-body text-review bg-card "> 
+<% @user.reviews.each do |r| %>
+    Cafe Name: <%= r.shop.name %> <br> -
+    Content: <%= r.content %> <br> -
+    Rating:
+    <% r.rating.times do  %>
+    <i class="bi bi-star-fill"></i> 
+    <% end %></p>  
+
+    <%= link_to "Edit your review", edit_review_path(r.id), class: "btn" %>
+    <%= link_to "Delete your review", review_path(r.id), method: 'delete',data: {confirm: "Are you sure?"}, class: "btn" %>
+    <br>
+    <br>
+    <% end %>
+</div>
+</div>
+</div></div>

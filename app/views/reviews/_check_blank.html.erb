@@ -1,6 +1,0 @@
- <% if @reviews.blank? %>
-    <%= "No reviews just yet, would you like to add the first?" %>
-    <%= link_to "Write a review", new_shop_review_path(r.id), class: "btn" %>
-    <% else %>
-    <%= link_to "Write a review", new_shop_review_path(r.id), class: "btn" %>
-<% end %>   

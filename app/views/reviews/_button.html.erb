@@ -1,0 +1,7 @@
+ <% if r.user == current_user %>
+    <div style="margin-bottom:2rem">
+    <%= link_to "Edit your review", edit_review_path(r.id), class: "btn" %>
+    </div>
+    <%= link_to "Delete your review", review_path(r.id), method: 'delete',data: {confirm: "Are you sure?"}, class: "btn" %>
+   
+<% end %>

@@ -9,4 +9,13 @@ module ReviewsHelper
     def user_authorized_for_review
         @review.user == current_user
     end
+    
+    def review_rating
+        @review.rating.to_i
+    end
+   
+
+    # def rating_star
+    #     rating = Review.average(:rating).round(2)
+    # end
 end

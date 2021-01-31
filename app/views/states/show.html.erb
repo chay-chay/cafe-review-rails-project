@@ -1,46 +1,19 @@
 <h1> State: <%= @state.name %> </h1>
-<div class="row">
-<% @state.shops.each do |s| %>
-<ol>
-    <li> 
-    <%= render partial: 'image', locals: {s: s} %>
-        <br>
-        Name :<%= s.name %> 
-        <br>
-        <br>
-        <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
-        <%= link_to "Write a review", new_shop_review_path(s.id), class: "btn" %>      
-    </li>
-</ol>
-<% end %>
-</div>
- 
-  <%= render 'check_blank' %>
 
 
-
+<%= render 'check_blank' %>
 
 <div class="container-fluid">
-
-<div class="row" >
-<% @state.shops.each do |s| %>
-
-    <div class="col-md-4"  style="display:inline-block" >
-     <div class="card" >
-     <div class="card-body" style="background-color: rgba(48, 30, 32, 0.9)"> 
-    <%= render partial: 'image', locals: {s: s} %>
-        
-        Name :<%= s.name %> 
-        <div style="padding:2rem">
-        <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
-        </div>
-        <%= link_to "Write a review", new_shop_review_path(s.id), class: "btn" %>  
-            
-            </div>   
-        </div>
- 
-</div>
-<% end %>
-</div>
-
+    <div class="row" >
+        <% @state.shops.each do |s| %>
+          <div class="col-md-4"  style="display:inline-block" >
+                <div class="card">
+                    <div class="card-body bg-card"> 
+                        <div class="img-cafe">
+                            <%= render partial: 'all_cafes', locals: {s: s} %>  
+                    </div>   
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>

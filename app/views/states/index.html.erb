@@ -1,16 +1,19 @@
 
-<h1> All States </h1>
+<h1 style="margin:3rem"> All States </h1>
 
 <%= render 'search' %>
-<div class="state-index">
-    <ul>
+<div class="container-fluid">
+     <div class="row" >
         <% @states.each do |s| %>
-            <li>
-                <br>
-                <br>
-            <%= link_to "#{s.name}", state_path(s.id), class: "btn" %> 
-            </li>
+            <div class="col-md-2"  style="display:inline-block"  >
+                <div class="card">
+                    <div class="card-body bg-card"> 
+                    <br>
+                    <%= link_to "#{s.name}", state_path(s.id), class: "btn" %> 
+                    </div>   
+                </div>
+            </div>
         <% end %>
-    </ul>
+    </div>
 </div>
 

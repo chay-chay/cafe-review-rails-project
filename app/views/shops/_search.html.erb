@@ -1,5 +1,20 @@
-<%= form_tag("/shops", method: "get") do %>
-    <%= label_tag(:name, "Search by cafe name:") %>
-    <%= text_field_tag(:name) %>
-    <%= submit_tag("Search") %>
-<% end %>
+
+<div class="search" >
+
+    <div style="display:inline-block;">
+        <%= form_tag('/shops', method: :get) do %>
+        <%= label_tag(:name, "Filter by :") %>
+        <%= select_tag "filter", options_for_select(["Select one", "cafe_average_rating", "most_rated" ], selected: ["Select one"], disabled: ["Select one"])%>
+        <%= submit_tag "Apply", class: "btn"%>
+        <% end %>        
+    </div>
+    
+    <div style="display:inline-block; margin-right: 0.5rem">
+        <%= form_tag("/shops", method: "get") do %>
+        <%= label_tag(:name, "Search by cafe name:") %>
+        <%= text_field_tag(:name) %>
+        <%= submit_tag("Search", class: "btn") %>
+        <% end %>
+    </div>
+
+</div>

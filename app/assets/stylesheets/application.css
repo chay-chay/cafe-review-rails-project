@@ -4,12 +4,13 @@
 html {
     height: 100%;
     text-align: center;
+    font-family: 'Dosis', sans-serif;
     
   }
   body {
     margin:0;
     padding:0;
-    font-family: sans-serif;
+    font-family: 'Dosis', sans-serif;
     color: #fff;
     background: linear-gradient(#35312b, #6d493b);
     background-attachment: fixed;
@@ -177,6 +178,7 @@ html {
   .btn {
     background-color: rgb(134, 111, 89);
     color: #fff;
+    box-shadow: 0px 0px 8px 0.3px   rgb(248, 247, 247);
   }
 
 
@@ -255,22 +257,30 @@ html {
 
 /* When moving the mouse over the close button */
 .closebtn:hover {
-  color: black;
+  color: rgb(61, 52, 52);
 }
 
 /* Cafe Img*/
 img{
   height: 100px;
   width: 100px;
+  box-shadow: 0px 0px 8px 0.3px rgb(243, 241, 241);
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
 }
 
 /* Cafe Welcome*/
 .img-welcome{
   height: 300px;
   width: 300px;
-  z-index:100;
-  
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  box-shadow: 0px 0px 8px 0.3px rgb(243, 241, 241);
 }
+
+
 
 
 /* Welcome page */
@@ -351,12 +361,13 @@ figcaption {
 .c-label {
   display: inline-block;
   color: #eee;
-  background-color: rgba(48, 30, 32, 0.9);
+  background-color: rgba(48, 30, 32, 0.9);/*rgb(70 61 62 / 90%)*/
   line-height: 1;
   padding: 0.5em 0.9em;
   margin-right: 0.5em;
   font-size: 1.4rem;
   font-weight: bold;
+  box-shadow: 0px 0px 8px 0.3px rgb(243, 241, 241); 
 }
 .view-sm {
   display: none;
@@ -461,14 +472,122 @@ figcaption {
   padding: 2rem;
 }
 
-/* shop */
-/* .card {
+/* state */
+.card {
   float: left;
   width: 100%;
   height:100%;
   padding: 0.5rem;
-  margin: 2rem;
   margin-bottom: 2rem;
   border: 0;
   box-shadow: 0px 0px 8px 0.3px rgb(243, 241, 241);
-} */
+} 
+
+.col-md-4{
+  margin-bottom: 3rem;
+}
+
+/* search */
+.search{
+  margin: 3rem;
+}
+
+.col-md-2{
+  margin-bottom: 3rem;
+}
+
+.shop-show{
+margin: 0 auto;
+width: 100%;
+text-align: center;
+}
+
+/*text review*/
+.text-review{
+  color: #ccc6be;
+}
+
+/* background-card */
+.bg-card{
+  background-color: #31271e;
+}
+
+/* review show*/
+.img-rev{
+  float:left;
+  margin-left: 3rem;
+}
+
+.margin-show-rev{
+  margin-left: 3rem;
+  margin-top: 1rem;
+  line-height: 1.4rem;
+}
+
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  background-color: #ffedd8;
+  text-align: center;
+  color: #31271e;
+  font-size:60px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
+
+/* users/show.html.erb */
+.welcome-img{
+  position: absolute;
+  right:140px; top:250px;
+  height: 400px;
+  width: 400px;
+  box-shadow: 0px 0px 8px 0.3px rgb(243, 241, 241);
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+}
+
+.welcome-text{
+  position: absolute;
+  right: 400px;
+  top: 70px;
+  
+  text-shadow: 2px 2px 5px rgb(219, 207, 152);
+  font-weight: 200;
+
+}
+
+.init-img{
+  position: absolute;
+  right: 100px;
+  top: 100px;
+  box-shadow: 0px 0px 8px 0.3px rgb(252, 251, 249);
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+}
+.credit{
+  position: absolute;
+  right: 250px;
+  top: 580px;
+}
+
+.user-card{
+  left: 50px;
+  top: 80px;
+  text-align: left;
+}
+
+/* search bar*/
+.search{
+text-align:right;
+
+}
+
+/* shops views */
+.img-cafe{
+  float: left;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}

@@ -1,0 +1,8 @@
+<div>
+    <br>
+    <% if s.user == current_user %>
+        <%= link_to "Edit a shop", edit_shop_path(s.id), class: "btn"%>
+        <%= link_to "Delete", shop_path(s.id), method: 'delete', data: {confirm: "Are you sure?"}, :class => "btn" %> 
+        <br>
+    <% end %>
+</div>

@@ -1,27 +1,52 @@
-  <%= form_for(@review) do |f| %>
-    <% if params[:shop_id] %>
-      <%= f.hidden_field :shop_id %>
-    Add review for cafe: <%= @review.shop.name %> 
-    <br>
-    <br>
-    State:  <%= @review.shop.state.name %>
+     <div class="container-fluid form">
+      <div class="row" >
+       <%= form_for(@review) do |f| %>
+            <div class="col-md-6"  style="display:inline-block" >
+                <div class="card"  >
+                    <div class="card-body bg-card"  >
+                        <div style="margin-top:3rem" style="text-align:left"> 
+                          <div style="margin-bottom:2rem">
+                             <% if params[:shop_id] %>
+                                <%= f.hidden_field :shop_id %>
+                                Add review for cafe: <%= @review.shop.try(:name) %> 
+                                <br>
+                                <br>
+                                State:  <%= @review.shop.state.try(:name) %>
 
-  <% else %>
-    <h2> Create a review </h2>
-      <div>
-      <%= f.label :shop_id, "Select an cafe" %>
-      <%= f.collection_select :shop_id, Shop.alpha, :id, :name_state, include_blank: true %>
+                              <% else %>
+                               
+                                <div>
+                                <%= f.label :shop_id, "Select an cafe" %>
+                                <%= f.collection_select :shop_id, Shop.alpha, :id, :name_state, include_blank: true %>
+                                </div>
+                              <% end %>
+                              </div>
+                                
+                               
+                                <%= f.label :rating %>
+                                <%= f.number_field :rating, min:0, max:5 %>
+                          
+                                <br>
+                                <br>
+                                <%= f.label :content %>
+                                <br>
+                                <%= f.text_area :content, size: "50x10" %>
+                                <br>
+                                <div style="margin:3rem">
+                                <%= f.submit :class => 'btn' %>
+                                </div>
+                            </div>
+                          </div>
+                    </div>   
+                </div>
+            </div>
+        <% end %>
     </div>
-<% end %>
+</div>
 
-  <%= f.label :rating %>
-  <%= f.number_field :rating, min:0, max:5 %>
- 
-  <br>
-  <br>
-  <%= f.label :content %>
-  <br>
-  <%= f.text_area :content, size: "50x10" %>
-  <br>
-  <%= f.submit :class => 'btn' %>
-<% end %>
+<script>
+$(‘#rating-form’).raty({
+path: ‘/assets/’,
+scoreName: ‘review[rating]’
+});
+</script>

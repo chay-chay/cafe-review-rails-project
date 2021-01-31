@@ -5,18 +5,21 @@ class Shop < ApplicationRecord
   belongs_to :user #optional creator of it (shop added by user)
   has_one_attached :image
   validates :name, :uniqueness => {scope: :state_id, :case_sensitive => false}
- 
-  # Ex:- scope :active, -> {where(:active => true)}}
-  scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")} #search cafe name
   
-  # scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
+  #scope
+  scope :alpha, -> {order(:name)}
+  scope :most_rated, -> { left_joins(:reviews).group("shops.id").order("count(rating) DESC")}
+  scope :cafe_average_rating, -> { left_joins(:reviews).group("shops.id").order("avg(reviews.rating) DESC")}
+  scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")} #search cafe name
+  # scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')} - left join to keep alll data
+  # Ex:- scope :active, -> {where(:active => true)}}
+  #where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
+
   #validation
   validates :name, presence: true
   # validate :shop_unique
   before_save :upcase_fields
-  scope :alpha, -> {order(:name)}
-  #where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
-  
+
  
   # accepts_nested_attributes_for :state 
   def state_attributes=(attributes) #add state in the cafe 
@@ -33,7 +36,6 @@ class Shop < ApplicationRecord
     end
   end
 
-
   def name_state
     "#{name} - #{state.try(:name)}"
   end
@@ -42,12 +44,16 @@ class Shop < ApplicationRecord
     self.name.upcase!
  end
 
-  def self.sum_rating
-    Review.average(:rating)
+  def avg_rating
+    # count = Shop.find_by_id(shop_id)
+    self.reviews.average(:rating)
+    # Review.average(:rating).round(2)
   end
  
-  
-
-
+  def count_reviews
+    # count = Shop.find_by_id(shop_id)
+    self.reviews.size
+    #count(:rating)
+  end
   
 end

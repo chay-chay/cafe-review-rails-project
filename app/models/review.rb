@@ -6,24 +6,30 @@ class Review < ApplicationRecord
   validates :content, presence: true, length: { maximum: 500 }
   validates :user, :uniqueness => {scope: :shop}
   # Ex:- scope :active, -> {where(:active => true)}
+  scope :order_by_review, -> { order("rating DESC") }
   
-  scope :avg_rating, -> {self.average(:rating)}
+ 
 
-  def blank_stars #check how to show starts
-    5 - rating.to_i
-   end
-
-   def name_state
+  def name_state
    self.shop.state.name
   end
 
   def avg_rating
-    Review.average(:rating).round(2)
+    # count = Shop.find_by_id(shop_id)
+    self.shop.reviews.average(:rating)
+    # Review.average(:rating).round(2)
   end
 
   def count_reviews
-    Review.count(:rating)
+    # count = Shop.find_by_id(shop_id)
+    self.shop.reviews.size
+    #count(:rating)
   end
+
+  
+
+
+    
 
 
 end

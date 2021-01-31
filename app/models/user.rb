@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  
     has_many :reviews
     #Option1 
     has_many :shops, through: :reviews #review
@@ -18,13 +17,15 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true
     # validates :password, presence: true, length: { in: 6..20 }, on: :create
-   
+    
     def self.from_omniauth(response)
         User.find_or_create_by(uid: response[:uid], provider: response[:provider]) do |u|
-            u.username = response[:info][:name]
+            u.username = response[:info][:username]
             u.email = response[:info][:email]
             u.password = SecureRandom.hex(15)
         end
     end
 
+    
+  
 end

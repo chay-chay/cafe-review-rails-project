@@ -1,14 +1,24 @@
+<%= render 'search' %>
+
+ <div style="margin:3rem" >
 <h1>  <%= @shop.name %> -  <%= @shop.state.name %> </h1>
+</div>
 
-<%= render partial: 'states/image', locals: {s: @shop} %>
-
-
-
-<%= link_to "Check out the review", shop_reviews_path(@shop), :class => "btn"%>
-<%= link_to "Write a review", new_shop_review_path(@shop), class: "btn"  %>
-
-<% if user_access %>
-    <%= link_to "Edit a shop", edit_shop_path(@shop), class: "btn" %>
-    <%= link_to "Delete", shop_path(@shop), method: 'delete', data: {confirm: "Are you sure?"}, class: "btn" %> 
-<% end %>
-
+<div class="container-fluid shop-show " >
+    <div class="row-md-12" >
+            <div class="col-md-6"  style="display:inline-block" >
+                <div class="card">
+                    <div class="card-body bg-card"> 
+                        <div style="margin:3rem" >
+                        <%= render partial: 'states/image', locals: {s: @shop} %>
+                        </div>
+                        <%= link_to "Check out the review", shop_reviews_path(@shop), :class => "btn"%>
+                        <%= link_to "Write a review", new_shop_review_path(@shop), class: "btn"  %>
+                        <div style="margin:2rem">
+                        <%= render partial: 'button', locals: {s: @shop} %>
+                        </div>
+                     </div>
+                </div>
+            </div> 
+    </div>
+</div>

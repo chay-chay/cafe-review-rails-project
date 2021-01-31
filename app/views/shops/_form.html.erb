@@ -1,19 +1,35 @@
-<%= form_for(@shop) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="container-fluid form">
+    <div class="row" >
+        <%= form_for(@shop) do |f| %>
+            <div class="col-md-6"  style="display:inline-block" >
+                <div class="card" >
+                    <div class="card-body bg-card" >
+                        <div style="margin-top:3rem" style="text-align:left"> 
+                            <%= f.label :Name %>
+                            <%= f.text_field :name %>
+                            </div>
+                            <div style="margin:3rem"> 
+                            <%= f.label :Image %>
+                            <%= f.file_field :image %> 
+                            <!-- associated with has_one_attaced and no need to add to schema -->
+                            </div>
 
-  <%= f.label :image %>  <!-- associated with has_one_attaced and no need to add to schema -->
-  <%= f.file_field :image %>
+                            <p> Select a state that already exist </p>
+                            <%= f.collection_select(:state_id, State.alpha, :id, :name, include_blank: 'Select One') %>
 
-  <p> Select a state that already exist </p>
-  <%= f.collection_select(:state_id, State.alpha, :id, :name, include_blank: 'Select One') %>
-
-  <p> Or create a new state for the cafe </p>
-  <!-- can write like this f.fields_for @shop.build_state%> -->
-  <%= f.fields_for :state do |s| %>
-  <%= s.label 'State name' %>
-  <%= s.text_field :name %>
-  <% end %>
-
-  <%= f.submit :class => 'btn' %>
-<% end %>  
+                            <p> Or create a new state for the cafe </p>
+                            <!-- can write like this f.fields_for @shop.build_state%> -->
+                            <%= f.fields_for :state do |s| %>
+                            <%= s.label 'State name' %>
+                            <%= s.text_field :name %>
+                            <% end %>
+                            <div style="margin:3rem" style="text-align:center">
+                            <%= f.submit :class => 'btn' %>
+                            </div>
+                          </div>
+                    </div>   
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -1,5 +1,7 @@
-<%= form_tag("/states", method: "get") do %>
+<div class="search">
+    <%= form_tag("/states", method: "get") do %>
     <%= label_tag(:name, "Search by state name:") %>
     <%= text_field_tag(:name) %>
-    <%= submit_tag("Search") %>
-<% end %>
+    <%= submit_tag("Search", class: "btn")  %>
+    <% end %>
+</div>
