@@ -2,11 +2,15 @@ class ShopsController < ApplicationController
     add_flash_types :success, :info, :warning, :danger
     before_action :redirect_if_not_logged_in
     before_action :redirect_if_not_authorized, only: [:edit, :update, :destroy]
-
+    before_action :set_shop, except: [:new, :create]
     def index
         set_shop
         if params[:name]
             @shops = Shop.search_by_name(params[:name]).alpha
+        elsif params[:filter] && params[:filter] == "most_rated"
+            @shops = Shop.most_rated
+        elsif params[:filter] && params[:filter] == "cafe_average_rating"
+            @shops = Shop.cafe_average_rating
         else
             @shops = Shop.alpha
         end
@@ -34,18 +38,14 @@ class ShopsController < ApplicationController
     end
 
     def show
-        set_shop
+      
     end
 
     def edit 
-        
-        set_shop
-       
+
     end
 
     def update
-        
-        set_shop
         @shop.update(shop_params)
         if @shop.valid?
             @shop.image.purge
@@ -58,7 +58,6 @@ class ShopsController < ApplicationController
     end
 
     def destroy
-        set_shop
         @shop.destroy
         redirect_to shops_path, danger: "Your cafe has been delete."
     end

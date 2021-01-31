@@ -1,8 +1,5 @@
 <h1> All reviews  </h1> 
 
-<%= render 'shops/search' %> 
-
-
 <% if @reviews.blank? %>
     <%= "No reviews just yet!  Would you like to add the first review?" %>
      <%= link_to "Write a review", new_shop_review_path(@shop), class: "btn" %>
@@ -33,9 +30,6 @@
                             <div style="margin:2rem">
                             <%= render partial: "button", locals: {r:r} %> 
                             <%= link_to "Write a review", new_shop_review_path(r.id), class: "btn" %>
-    
-   
-
                             </div>
                     </div>   
                 </div>

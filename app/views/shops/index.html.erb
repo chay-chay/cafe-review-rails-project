@@ -1,25 +1,20 @@
 
 <h1 style="margin:3rem"> All Cafes </h1>
 
-<div class="search">
-<%= render 'search' %>
+ <div class="search" >
+    <%= render 'search' %>
 </div>
 
 
 <div class="container-fluid">
     <div class="row" >
         <% @shops.each do |s| %>
-            <div class="col-md-4"  style="display:inline-block" >
+          <div class="col-md-4"  style="display:inline-block" >
                 <div class="card">
                     <div class="card-body bg-card"> 
-                           <%= render partial: 'states/image', locals: {s: s} %>
-                            <%= s.name  %>  - <%= s.state.try(:name) %>
-                            <div style="padding:2rem">
-                            <%= link_to "Check out the review", shop_reviews_path(s.id), :class => "btn"%>
-                            </div>
-                            <div>
-                            <%= link_to "Write a review", new_shop_review_path(s.id), :class => "btn" %>  
-                            </div>
+                           <div class="img-cafe">
+          <%= render partial: 'states/all_cafes', locals: {s: s} %>   
+                         
                          <%= render partial: 'edit_shop', locals: {s: s} %>   
                     </div>   
                 </div>

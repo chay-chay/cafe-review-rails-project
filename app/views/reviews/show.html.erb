@@ -3,33 +3,32 @@
 
 <div class="container-fluid shop-show " >
     <div class="row-md-12" >
-            <div class="col-md-6"  style="display:inline-block" >
-                <div class="card">
-                    <div class="card-body text-review bg-card"> 
-                           <div class="img-rev"><%= render partial: 'states/image', locals: {s: @shop} %></div>
-                            <p><%= @shop.name_state %></p>
-                            Average Rating of Cafe: <%= @review.avg_rating %> 
-                            <div class=”review-rating” data-score = “<%= @review.rating %>”></div>
-                            <p style="text-align:center">Total: <%= @review.count_reviews %> Review(s) </p>
-                            <div class="margin-show-rev" style="margin-top: 2rem">
-                            <p style="text-align:left" >Review: <%= @review.content %></p>
-                            </div>
-                             <div class="margin-show-rev" style="margin-top: 2rem">
-                            <p style="text-align:left" > Rating: 
-                            <% review_rating.times do  %>
-                             <i class="bi bi-star-fill"></i> 
-                            <% end %></p> </div>
-                            <p class="margin-show-rev", style="text-align:left" >Username: <%= @review.user.username %></p>
-                            <p class="margin-show-rev", style="text-align:left" >Date: <%= @review.created_at.strftime("%b %d, %Y - %I:%M%p")%></p>
-                            <div style="padding:2rem">
-                            <% if user_authorized_for_review %>
-                                <%= link_to "Edit your review", edit_review_path, class: "btn" %>
-                                 <%= link_to "Delete your review", review_path, method: 'delete', method: 'delete',data: {confirm: "Are you sure?"}, class: "btn" %>
-                            <% end %>
+        <div class="col-md-6"  style="display:inline-block" >
+            <div class="card">
+                <div class="card-body text-review bg-card"> 
+                    <div class="img-rev"><%= render partial: 'states/image', locals: {s: @shop} %></div>
+                        <p><%= @shop.name_state %></p>
+                        Average Rating of Cafe: <%= @review.avg_rating %> 
+                        <div class=”review-rating” data-score = “<%= @review.rating %>”></div>
+                        <p style="text-align:center">Total: <%= @review.count_reviews %> Review(s) </p>
+                        <div class="margin-show-rev" style="margin-top: 2rem">
+                        <p style="text-align:left" >Review: <%= @review.content %></p>
                         </div>
-                    </div>   
-                </div>
+                        <div class="margin-show-rev" style="margin-top: 2rem">
+                        <p style="text-align:left" > Rating: 
+                        <% review_rating.times do  %>
+                        <i class="bi bi-star-fill"></i> 
+                        <% end %></p> </div>
+                        <p class="margin-show-rev", style="text-align:left" >Username: <%= @review.user.username %></p>
+                        <p class="margin-show-rev", style="text-align:left" >Date: <%= @review.created_at.strftime("%b %d, %Y - %I:%M%p")%></p>
+                        <div style="padding:2rem">
+                        <% if user_authorized_for_review %>
+                        <%= link_to "Edit your review", edit_review_path, class: "btn" %>
+                        <%= link_to "Delete your review", review_path, method: 'delete',data: {confirm: "Are you sure?"}, class: "btn" %>
+                        <% end %>
+                    </div>
+                </div>   
             </div>
-        
+        </div>
     </div>
 </div>
