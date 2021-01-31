@@ -5,7 +5,6 @@
     <%= render 'search' %>
 </div>
 
-
 <div class="container-fluid">
     <div class="row" >
         <% @shops.each do |s| %>
@@ -13,9 +12,10 @@
                 <div class="card">
                     <div class="card-body bg-card"> 
                            <div class="img-cafe">
-          <%= render partial: 'states/all_cafes', locals: {s: s} %>   
-                         
+                           
+                            <%= render partial: 'states/all_cafes', locals: {s: s} %>   
                          <%= render partial: 'edit_shop', locals: {s: s} %>   
+
                     </div>   
                 </div>
             </div>
