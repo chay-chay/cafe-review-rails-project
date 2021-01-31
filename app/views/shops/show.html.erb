@@ -1,7 +1,6 @@
-<%= render 'search' %>
 
  <div style="margin:3rem" >
-<h1>  <%= @shop.name %> -  <%= @shop.state.name %> </h1>
+
 </div>
 
 <div class="container-fluid shop-show " >
@@ -9,9 +8,11 @@
             <div class="col-md-6"  style="display:inline-block" >
                 <div class="card">
                     <div class="card-body bg-card"> 
+                     <h1>  <%= @shop.name %> -  <%= @shop.state.name %> </h1>  
                         <div style="margin:3rem" >
                         <%= render partial: 'states/image', locals: {s: @shop} %>
                         </div>
+                         
                         <%= link_to "Check out the review", shop_reviews_path(@shop), :class => "btn"%>
                         <%= link_to "Write a review", new_shop_review_path(@shop), class: "btn"  %>
                         <div style="margin:2rem">

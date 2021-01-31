@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   resources :reviews
   resources :shops do
-    resources :reviews, only: [:new, :index, :edit]
+    resources :reviews, only: [:new, :index, :create, :edit]
   end
   resources :states, only: [:show, :index]
   resources :users, only: [:show, :new]

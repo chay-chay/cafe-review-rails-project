@@ -1,7 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
   before_action :redirect_if_not_authorized_review, only: [:edit, :update, :destroy]
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
   add_flash_types :success, :info, :warning, :danger
+
     def new
         if @shop = Shop.find_by_id(params[:shop_id]) #nested
             @review = @shop.reviews.build
@@ -26,17 +28,17 @@ class ReviewsController < ApplicationController
     end
 
     def show
-        @review = Review.find_by_id(params[:id])
+        
         @shop = @review.shop
       end
 
       def edit 
-        @review = Review.find_by_id(params[:id])
+        
        
     end
 
     def update
-        @review = Review.find(params[:id])
+        
         
         @review.update(review_params)
         if @review.valid?
@@ -47,7 +49,6 @@ class ReviewsController < ApplicationController
     end
 
     def index
-   
         if @shop = Shop.find_by_id(params[:shop_id])
             #Check for nested like shop/1/reviews and valid id
             @reviews = @shop.reviews.order_by_review
@@ -61,7 +62,7 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-      @review = Review.find(params[:id])
+      
       @review.destroy
       redirect_to shop_path, danger: "Your review has been delete."
   end
@@ -72,6 +73,10 @@ class ReviewsController < ApplicationController
 
     def review_params
         params.require(:review).permit(:shop_id, :rating, :content )
+    end
+
+    def set_review
+      @review = Review.find_by_id(params[:id])
     end
     
 
