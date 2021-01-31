@@ -5,7 +5,6 @@ class ShopsController < ApplicationController
     before_action :set_shop, except: [:new, :create]
     
     def index
-        set_shop
         if params[:name]
             @shops = Shop.search_by_name(params[:name]).alpha
         elsif params[:filter] && params[:filter] == "most_rated"
