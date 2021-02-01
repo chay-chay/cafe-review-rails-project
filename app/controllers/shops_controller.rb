@@ -7,8 +7,8 @@ class ShopsController < ApplicationController
     def index
         if params[:name]
             @shops = Shop.search_by_name(params[:name]).alpha
-        elsif params[:filter] && params[:filter] == "most_rated"
-            @shops = Shop.most_rated
+        elsif params[:filter] && params[:filter] == "most_reviewed"
+            @shops = Shop.most_reviewed
         elsif params[:filter] && params[:filter] == "cafe_average_rating"
             @shops = Shop.cafe_average_rating
         else

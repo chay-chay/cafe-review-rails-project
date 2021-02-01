@@ -39,7 +39,6 @@ class ReviewsController < ApplicationController
 
     def update
         
-        
         @review.update(review_params)
         if @review.valid?
             redirect_to review_path, success: "Update successful!"
@@ -64,7 +63,7 @@ class ReviewsController < ApplicationController
     def destroy
       
       @review.destroy
-      redirect_to shop_path, danger: "Your review has been delete."
+      redirect_to shops_path, danger: "Your review has been delete."
   end
 
 

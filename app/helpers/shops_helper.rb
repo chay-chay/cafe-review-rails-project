@@ -3,5 +3,6 @@ module ShopsHelper
         current_user == @shop.user 
     end
 
+  
    
 end

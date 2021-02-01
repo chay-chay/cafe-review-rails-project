@@ -8,7 +8,7 @@ class Shop < ApplicationRecord
   
   #scope
   scope :alpha, -> {order(:name)}
-  scope :most_rated, -> { left_joins(:reviews).group("shops.id").order("count(rating) DESC")}
+  scope :most_reviewed, -> { left_joins(:reviews).group("shops.id").order("count(rating) DESC")}
   scope :cafe_average_rating, -> { left_joins(:reviews).group("shops.id").order("avg(reviews.rating) DESC")}
   
   scope :search_by_name, -> (search) { where("name LIKE ?", "%#{search}%")} #search cafe name

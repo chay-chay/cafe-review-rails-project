@@ -14,6 +14,13 @@ module ReviewsHelper
         @review.rating.to_i
     end
    
+    def display_header
+        if @shop
+            content_tag(:h3, "#{@shop.name_state}")
+        else
+            content_tag(:h3, "Create a review")
+        end
+    end
 
     # def rating_star
     #     rating = Review.average(:rating).round(2)
