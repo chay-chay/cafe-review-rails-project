@@ -4,7 +4,7 @@
     <div style="display:inline-block;">
         <%= form_tag('/shops', method: :get) do %>
         <%= label_tag(:name, "Filter by :") %>
-        <%= select_tag "filter", options_for_select(["Select one", "cafe_average_rating", "most_rated" ], selected: ["Select one"], disabled: ["Select one"])%>
+        <%= select_tag "filter", options_for_select(["Select one", "cafe_average_rating", "most_reviewed" ], selected: ["Select one"], disabled: ["Select one"])%>
         <%= submit_tag "Apply", class: "btn"%>
         <% end %>        
     </div>

@@ -8,7 +8,7 @@
             <div class="col-md-6"  style="display:inline-block" >
                 <div class="card">
                     <div class="card-body bg-card"> 
-                     <h1>  <%= @shop.name %> -  <%= @shop.state.name %> </h1>  
+                     <h1>  <%= @shop.try(:name) %> -  <%= @shop.state.name %> </h1>  
                         <div style="margin:3rem" >
                         <%= render partial: 'states/image', locals: {s: @shop} %>
                         </div>
