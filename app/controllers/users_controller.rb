@@ -22,7 +22,9 @@ class UsersController < ApplicationController
         redirect_to root_path if !@user
     end
 
-   
+#    def most_user
+#     @users = User.most_user
+#    end
 
     private
     def user_params

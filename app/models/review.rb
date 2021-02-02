@@ -7,7 +7,7 @@ class Review < ApplicationRecord
   validates :user, :uniqueness => {scope: :shop}
   # Ex:- scope :active, -> {where(:active => true)}
   scope :order_by_review, -> { order("rating DESC") }
-  
+ 
  
 
   def name_state

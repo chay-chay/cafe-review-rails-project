@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
     # has_one :shop #optional that they have created
     has_secure_password
-     # validate the presence of password
+    # validate the presence of password
     # gives us these methods:  .password=, .authenticate, .password
     # validates :username, presence: true, on: :update 
 
@@ -30,6 +30,14 @@ class User < ApplicationRecord
         end
     end
 
+
+
+
+
+
+
+
+    #scope :most_user, -> { joins(:reviews).group("users.id").order("count(content) DESC")}
     
   
 end

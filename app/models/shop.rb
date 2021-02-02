@@ -4,8 +4,11 @@ class Shop < ApplicationRecord
   belongs_to :state
   belongs_to :user #optional creator of it (shop added by user)
   has_one_attached :image
+    #validation
+  validates :name, presence: true
+  validate :shop_unique
   validates :name, :uniqueness => {scope: :state_id, :case_sensitive => false}
-  
+  before_save :upcase_fields
   #scope
   scope :alpha, -> {order(:name)}
   scope :most_reviewed, -> { left_joins(:reviews).group("shops.id").order("count(rating) DESC")}
@@ -16,11 +19,13 @@ class Shop < ApplicationRecord
   # Ex:- scope :active, -> {where(:active => true)}}
   #where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
 
-  #validation
-  validates :name, presence: true
-  validate :shop_unique
-  before_save :upcase_fields
 
+  # def self.trendy_shop
+  #   review = Review.last
+  #   review.shop
+  # end
+  
+# Ex:- scope :active, -> {where(:active => true)}
  
   # accepts_nested_attributes_for :state 
   def state_attributes=(attributes) #add state in the cafe 
