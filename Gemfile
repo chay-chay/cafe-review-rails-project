@@ -25,9 +25,9 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'rufo'
 
 #allows user to use third party
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-rails_csrf_protection'
+gem 'omniauth' #give us ability to login in first place amd make a ouside requested
+gem 'omniauth-google-oauth2' #gen for omniauth
+gem 'omniauth-rails_csrf_protection' #make request to the token to check if match with google
 
 #amazon
 # gem 'aws-sdk-rails', '~> 3'

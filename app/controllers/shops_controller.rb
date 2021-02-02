@@ -62,7 +62,7 @@ class ShopsController < ApplicationController
         redirect_to shops_path, danger: "Your cafe has been delete."
     end
 
-
+    
 
     private
 
