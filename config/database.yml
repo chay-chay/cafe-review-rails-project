@@ -56,6 +56,11 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
+  database: cafe_production
+  pool: 5
+  username: chayanit
+  password:
+  timeout: 5000
   # database: db/production.sqlite3
 
 
