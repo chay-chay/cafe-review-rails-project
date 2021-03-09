@@ -53,6 +53,10 @@ test:
   password:
   timeout: 5000
 
+production:
+  adapter: postgresql
+  encoding: unicode
+  # database: db/production.sqlite3
 
 
 # # SQLite. Versions 3.8.0 and up are supported.
