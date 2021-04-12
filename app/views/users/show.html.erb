@@ -11,6 +11,9 @@
 </div>
 
 <div class="container-fluid shop-show" >
+   <% if @user.reviews.blank? %>
+    <%= "No reviews just yet! " %>  
+    <% end %>
 
         <div class="col-md-6" >
             <div class="card user-card">
