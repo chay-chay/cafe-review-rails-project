@@ -11,13 +11,12 @@
 </div>
 
 <div class="container-fluid shop-show" >
-   <% if @user.reviews.blank? %>
-    <%= "No reviews just yet! " %>  
-    <% end %>
-
-        <div class="col-md-6" >
-            <div class="card user-card">
-                <div class="card-body text-review bg-card "> 
+    <div class="col-md-6" >
+        <div class="card user-card">
+            <div class="card-body text-review bg-card "> 
+                <% if @user.reviews.blank? %>
+                    <%= "No reviews just yet! " %>  
+                <% end %>
                 <% @user.reviews.each do |r| %>
                     Cafe Name: <%= r.shop.name %> <br> -
                     Content: <%= r.content %> <br> -
