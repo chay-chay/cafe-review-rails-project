@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
         @shop = @review.shop
       end
 
-      def edit 
+    def edit 
         
        
     end
